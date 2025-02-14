@@ -8,16 +8,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body { 
+    /* Se define que el body no supere los 720px y se centre */
+    body {
+      max-width: 720px;
+      margin: 0 auto;
       font-family: 'Montserrat', sans-serif; 
-      margin: 0; 
-      padding: 0; 
       background: #111; 
       color: #ddd; 
       text-align: center;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     /* Solo los títulos en mayúsculas */
     h1, h2, h3, .brand-text, nav a {
@@ -139,11 +140,11 @@
       text-align: center;
       margin-bottom: 20px;
     }
-    /* En móviles, centramos el texto de Acerca de Mi */
+    /* En móviles (hasta 720px), centramos el texto de Acerca de Mi */
     @media (max-width: 720px) {
       #acerca .container {
+        width: 100%;
         text-align: center !important;
-        max-width: 100%;
         padding: 0 20px;
       }
     }
@@ -753,3 +754,4 @@
   </script>
 </body>
 </html>
+
