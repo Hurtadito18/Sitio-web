@@ -2,25 +2,49 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta viewport para móvil -->
+  <!-- Meta viewport para que el diseño se adapte al dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseñador Gráfico - Móvil</title>
+  <title>Diseñador Gráfico - Versión Móvil</title>
+  <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Aplicamos box-sizing a todos los elementos */
+    /* Aseguramos que ningún elemento sobresalga */
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    /* Evitamos scroll horizontal */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    /* Dejamos que solo el body maneje el scroll vertical y ocultamos la barra */
     body {
+      overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
       background: #111;
       color: #ddd;
       text-align: center;
+      /* Ocultar scroll vertical en WebKit */
+      -ms-overflow-style: none;  /* IE y Edge */
+      scrollbar-width: none;  /* Firefox */
     }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
     h1, h2, h3, .brand-text { text-transform: uppercase; }
     
-    /* HEADER: Contenedor negro a lo largo de la pantalla */
+    /* Contenedor principal para móviles: ancho fijo de 360px */
+    .main-container {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    
+    /* Encabezado: Solo logo y título, contenedor negro extendido */
     header {
       background: #000;
       padding: 15px 0;
@@ -39,36 +63,6 @@
     }
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
-    
-    /* SECCIÓN ACERCA DE MI: Contenedor gris a lo largo de la pantalla */
-    #acerca {
-      background: #222;
-      padding: 30px 10px;
-      width: 100%;
-      text-align: justify;
-    }
-    #acerca .acerca-container {
-      max-width: 360px;
-      margin: 0 auto;
-    }
-    #acerca h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 20px;
-    }
-    #acerca p {
-      font-size: 12px;
-      line-height: 1.4;
-      font-weight: 300;
-    }
-    
-    /* CONTENEDOR PRINCIPAL para el resto de secciones */
-    .main-container {
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      padding: 0 10px;
-    }
     
     /* Banner */
     .banner {
@@ -92,6 +86,28 @@
     }
     .btn:hover { transform: scale(1.05); }
     
+    /* Secciones generales */
+    .section { padding: 20px 0; }
+    
+    /* Acerca de Mi: Contenedor gris extendido */
+    #acerca {
+      background: #222;
+      padding: 30px 10px;
+      width: 100%;
+      text-align: justify;
+    }
+    .acerca-container {
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    #acerca h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    #acerca p { font-size: 12px; line-height: 1.4; font-weight: 300; }
+    
     /* Servicios (Slider) */
     .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
     .services-container {
@@ -99,6 +115,7 @@
       gap: 10px;
       transition: transform 0.5s ease;
       overflow-x: auto;
+      overflow-y: hidden;
       scroll-behavior: smooth;
       padding-bottom: 10px;
       -ms-overflow-style: none;
@@ -183,7 +200,7 @@
     .logo-offer p { font-size: 14px; line-height: 1.4; }
     .logo-offer .btn { margin-top: 10px; font-size: 14px; }
     
-    /* Testimonios (6) */
+    /* Testimonios (6 elementos) */
     .testimonial-container {
       display: flex;
       flex-wrap: wrap;
@@ -205,7 +222,7 @@
     .testimonial h3 { font-weight: 700; margin: 5px 0; font-size: 14px; }
     .testimonial p { line-height: 1.4; }
     
-    /* FAQ (6) */
+    /* Preguntas Frecuentes (6 elementos) */
     .faq-container {
       display: flex;
       flex-wrap: wrap;
@@ -297,68 +314,59 @@
       gap: 10px;
       z-index: 999;
     }
-    .social-bar a {
-      color: #0f0;
-      font-size: 20px;
-      transition: transform 0.3s;
-    }
+    .social-bar a { color: #0f0; font-size: 20px; transition: transform 0.3s; }
     .social-bar a:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
-  <!-- El encabezado y la sección Acerca de Mi salen a lo largo de la pantalla -->
-  <header data-aos="fade-down">
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
-        <div class="brand-text">Diseñador Gráfico</div>
-      </div>
-    </div>
-  </header>
-  
-  <section id="acerca" data-aos="fade-up">
-    <div class="acerca-container">
-      <h2>Acerca de Mi</h2>
-      <p>
-        Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.
-      </p>
-      <p>
-        Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.
-      </p>
-    </div>
-  </section>
-  
-  <!-- Contenedor principal para el resto de secciones -->
   <div class="main-container">
-    <!-- Servicios (Slider) -->
+    <!-- Encabezado: Solo logo y título -->
+    <header data-aos="fade-down">
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
+          <div class="brand-text">Diseñador Gráfico</div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sección Acerca de Mi: Contenedor gris extendido -->
+    <section id="acerca" data-aos="fade-up">
+      <div class="acerca-container">
+        <h2>Acerca de Mi</h2>
+        <p>
+          Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.
+        </p>
+        <p>
+          Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Servicios -->
     <section id="servicios" class="section" data-aos="fade-up">
       <h2>Nuestros Servicios</h2>
-      <div class="services-slider">
-        <button class="slider-arrow left-arrow">&#10094;</button>
-        <div class="services-container">
-          <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-paint-brush"></i>
-            <h3>Branding</h3>
-            <p>Identidad visual única.</p>
-          </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-            <i class="fas fa-laptop-code"></i>
-            <h3>Diseño Web</h3>
-            <p>Sitios web atractivos.</p>
-          </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-            <i class="fas fa-bullhorn"></i>
-            <h3>Publicidad</h3>
-            <p>Campañas impactantes.</p>
-          </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-            <i class="fab fa-google"></i>
-            <h3>Publicidad Google</h3>
-            <p>Maximiza tu alcance.</p>
-          </div>
-          <!-- Puedes agregar más servicios según necesites -->
+      <div class="services-container">
+        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-paint-brush"></i>
+          <h3>Branding</h3>
+          <p>Identidad visual única.</p>
         </div>
-        <button class="slider-arrow right-arrow">&#10095;</button>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Diseño Web</h3>
+          <p>Sitios web atractivos.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-bullhorn"></i>
+          <h3>Publicidad</h3>
+          <p>Campañas impactantes.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+          <i class="fab fa-google"></i>
+          <h3>Publicidad Google</h3>
+          <p>Maximiza tu alcance.</p>
+        </div>
       </div>
     </section>
     
@@ -404,7 +412,7 @@
       </div>
     </section>
     
-    <!-- Testimonios (6 elementos) -->
+    <!-- Testimonios -->
     <section id="testimonios" class="section" data-aos="fade-up">
       <h2>Testimonios</h2>
       <div class="testimonial-container">
@@ -441,7 +449,7 @@
       </div>
     </section>
     
-    <!-- Preguntas Frecuentes (6 FAQs) -->
+    <!-- Preguntas Frecuentes -->
     <section id="faq" class="section" data-aos="fade-up">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-container">
@@ -454,12 +462,12 @@
           <p>Generalmente, de 7 a 15 días hábiles, según la complejidad.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
-          <h3>¿Cuántas revisiones se ofrecen?</h3>
-          <p>Se incluyen hasta 3 revisiones sin costo adicional.</p>
+          <h3>¿Cuántas revisiones?</h3>
+          <p>Hasta 3 revisiones sin costo adicional.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
           <h3>¿En qué formatos se entregan?</h3>
-          <p>PNG, JPG y vectores (AI, EPS, PDF).</p>
+          <p>Se entregan en PNG, JPG y vectores (AI, EPS, PDF).</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="400">
           <h3>Soporte post-entrega</h3>
@@ -505,7 +513,7 @@
         <i class="fab fa-instagram"></i>
       </a>
     </div>
-  </div> <!-- .main-container -->
+  </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
@@ -533,4 +541,3 @@
   </script>
 </body>
 </html>
-
