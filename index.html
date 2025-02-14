@@ -22,6 +22,8 @@
     body {
       margin: 0;
       padding: 0;
+      /* Forzamos que el body tenga al menos el alto del viewport */
+      min-height: 100vh;
       overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
       background: #111;
@@ -138,7 +140,6 @@
     /* Sección de Servicios en cuadrícula (sin scroll horizontal) */
     .services-slider {
       margin: 20px 0;
-      /* No se usa slider, por lo que eliminamos flechas y comportamiento de scroll */
     }
     .services-container {
       display: grid;
@@ -153,7 +154,7 @@
       padding: 15px;
       border-radius: 10px;
       width: 100%;
-      /* Se ajusta al ancho del grid cell */
+      /* Se ajusta al ancho de cada celda del grid */
       position: relative;
       overflow: hidden;
       transition: transform 0.3s;
@@ -367,7 +368,6 @@
       
       .section { padding: 40px 0; }
       
-      /* Para PC, definimos la cuadrícula con más columnas si es posible */
       .services-container {
         display: grid;
         gap: 20px;
@@ -382,7 +382,7 @@
   </style>
 </head>
 <body>
-  <!-- Versión PC: Contenido completo (para móviles, el diseño se mantiene en cuadrícula sin scroll horizontal) -->
+  <!-- En este código se muestra el contenido completo en todas las pantallas -->
   <div class="desktop-content">
     <!-- Header extendido de lado a lado -->
     <header data-aos="fade-down" class="full-header">
@@ -401,7 +401,7 @@
       <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contactame</a>
     </section>
     
-    <!-- Sección Acerca de Mi extendida de lado a lado -->
+    <!-- Sección Acerca de Mi extendida -->
     <section id="acerca" data-aos="fade-up" class="full-acerca">
       <div class="acerca-container">
         <h2>Acerca de Mi</h2>
@@ -416,7 +416,7 @@
     
     <!-- Contenedor principal para el resto de secciones -->
     <div class="main-container">
-      <!-- Servicios -->
+      <!-- Servicios en cuadrícula -->
       <section id="servicios" class="section" data-aos="fade-up">
         <h2>Nuestros Servicios</h2>
         <div class="services-slider">
@@ -608,7 +608,6 @@
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Ya no se usa slider, por lo que se elimina la funcionalidad de flechas.
     // Opcional: Al hacer clic en un servicio se redirige a WhatsApp
     document.querySelectorAll('.service-item').forEach(item => {
       item.addEventListener('click', () => {
@@ -618,5 +617,4 @@
   </script>
 </body>
 </html>
-
 
