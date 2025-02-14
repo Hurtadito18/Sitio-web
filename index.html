@@ -60,24 +60,12 @@
       font-size: 18px;
     }
 
-    /* SECCIÓN MENSAJE PRINCIPAL */
+    /* MENSAJE PRINCIPAL (solo el botón) */
     .mensaje-container {
       max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
       text-align: center;
-    }
-    .mensaje-container h2 {
-      margin-bottom: 10px;
-      font-size: 24px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .mensaje-container p {
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.4;
     }
     .btn {
       background: #0f0;
@@ -91,6 +79,26 @@
     }
     .btn:hover {
       transform: scale(1.05);
+    }
+
+    /* ACERCA DE MÍ */
+    .full-acerca {
+      background: #222;
+      padding: 30px 15px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+    .full-acerca h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    .full-acerca p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     /* CONTENEDOR PRINCIPAL */
@@ -112,11 +120,10 @@
     /* SERVICIOS */
     .services-container {
       display: flex;
-      flex-wrap: wrap; /* En móviles se van acomodando */
+      flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
     }
-    /* En pantallas grandes, se puede permitir scroll horizontal si lo deseas */
     @media (min-width: 768px) {
       .services-container {
         flex-wrap: nowrap;
@@ -299,11 +306,16 @@
     </div>
   </header>
 
-  <!-- MENSAJE PRINCIPAL -->
+  <!-- MENSAJE PRINCIPAL (solo botón) -->
   <section class="mensaje-container" data-aos="fade-up">
-    <h2>Creatividad sin límites</h2>
-    <p>Convierte tu negocio en una marca memorable. Destaca en el mercado con un diseño profesional y estratégico.</p>
     <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contáctame</a>
+  </section>
+
+  <!-- ACERCA DE MÍ -->
+  <section id="acerca" class="full-acerca" data-aos="fade-up">
+    <h2>Acerca de Mi</h2>
+    <p>Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Trabajo de forma independiente colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.</p>
+    <p>Ofrezco soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.</p>
   </section>
 
   <!-- CONTENEDOR PRINCIPAL -->
