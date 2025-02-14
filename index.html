@@ -135,27 +135,26 @@
     /* Secciones generales */
     .section { padding: 20px 0; }
     
-    /* Servicios (Slider) */
-    .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
-    .services-container {
-      display: flex;
-      gap: 10px;
-      transition: transform 0.5s ease;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      /* En móviles forzamos solo gestos horizontales para evitar scroll vertical en esta sección */
-      touch-action: pan-x;
+    /* Servicios en cuadrícula (sin slider ni scroll horizontal) */
+    .services-slider {
+      margin: 20px 0;
+      /* Ya no usaremos position relative ni flechas */
     }
-    .services-container::-webkit-scrollbar { display: none; }
+    .services-container {
+      display: grid;
+      gap: 10px;
+      /* Por defecto, dos columnas en móvil */
+      grid-template-columns: 1fr 1fr;
+      overflow: visible;
+      scroll-behavior: auto;
+      padding-bottom: 0;
+    }
     .service-item {
       background: #222;
       padding: 15px;
       border-radius: 10px;
-      width: 250px;
+      /* Ajustamos el ancho al 100% del grid cell */
+      width: 100%;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
@@ -177,23 +176,6 @@
     .service-item:hover::before { transform: scale(1); }
     .service-item:hover { transform: scale(1.05); }
     .service-item i { font-size: 30px; color: #0f0; margin-bottom: 5px; }
-    
-    /* Botones de flecha para PC (ocultos en móviles) */
-    .slider-arrow {
-      display: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      font-size: 20px;
-      padding: 8px;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .left-arrow { left: 5px; }
-    .right-arrow { right: 5px; }
     
     /* Paso a Paso */
     .step-box {
@@ -387,21 +369,18 @@
       
       .section { padding: 40px 0; }
       
-      .services-container { gap: 20px; }
-      .service-item { width: 300px; padding: 20px; }
-      .service-item i { font-size: 36px; }
+      /* En PC, para los servicios usaremos una cuadrícula con más columnas */
+      .services-container {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        overflow: visible;
+        padding-bottom: 0;
+        scroll-behavior: auto;
+        touch-action: auto;
+      }
       
-      .step-box { font-size: 16px; }
-      
-      .logo-offer { max-width: 400px; }
-      
-      .testimonial { max-width: 400px; font-size: 16px; padding: 20px; }
-      .testimonial img { width: 80px; height: 80px; }
-      
-      .faq-item { max-width: 400px; font-size: 16px; padding: 20px; }
-      
-      /* Mostrar flechas en PC */
-      .slider-arrow { display: block; }
+      .service-item { width: 100%; }
     }
   </style>
 </head>
@@ -446,8 +425,6 @@
       <section id="servicios" class="section" data-aos="fade-up">
         <h2>Nuestros Servicios</h2>
         <div class="services-slider">
-          <!-- Flechas para PC -->
-          <button class="slider-arrow left-arrow">‹</button>
           <div class="services-container">
             <div class="service-item" data-aos="fade-up" data-aos-delay="100">
               <i class="fas fa-paint-brush"></i>
@@ -481,7 +458,6 @@
               <p>Empaques que resaltan tu producto.</p>
             </div>
           </div>
-          <button class="slider-arrow right-arrow">›</button>
         </div>
       </section>
       
@@ -637,18 +613,7 @@
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Slider de servicios (opcional)
-    const leftArrow = document.querySelector('.left-arrow');
-    const rightArrow = document.querySelector('.right-arrow');
-    const servicesContainer = document.querySelector('.services-container');
-    if (leftArrow && rightArrow && servicesContainer) {
-      leftArrow.addEventListener('click', () => {
-        servicesContainer.scrollBy({ left: -300, behavior: 'smooth' });
-      });
-      rightArrow.addEventListener('click', () => {
-        servicesContainer.scrollBy({ left: 300, behavior: 'smooth' });
-      });
-    }
+    // Ya no se usa slider, se ha removido la funcionalidad de flechas.
     
     // Opcional: Al hacer clic en un servicio se redirige a WhatsApp
     document.querySelectorAll('.service-item').forEach(item => {
@@ -659,3 +624,4 @@
   </script>
 </body>
 </html>
+
