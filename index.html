@@ -137,7 +137,11 @@
     .section { padding: 20px 0; }
     
     /* Servicios (Slider) */
-    .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
+    .services-slider {
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+    }
     .services-container {
       display: flex;
       gap: 10px;
@@ -148,7 +152,8 @@
       padding-bottom: 10px;
       -ms-overflow-style: none;
       scrollbar-width: none;
-      touch-action: auto;
+      /* Para móviles verticales, forzamos gestos verticales */
+      touch-action: pan-y;
     }
     .services-container::-webkit-scrollbar { display: none; }
     .service-item {
@@ -177,7 +182,10 @@
     .service-item:hover::before { transform: scale(1); }
     .service-item:hover { transform: scale(1.05); }
     .service-item i { font-size: 30px; color: #0f0; margin-bottom: 5px; }
+    
+    /* Botones de flecha para PC: se ocultan en móvil */
     .slider-arrow {
+      display: none;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -396,6 +404,9 @@
       .testimonial img { width: 80px; height: 80px; }
       
       .faq-item { max-width: 400px; font-size: 16px; padding: 20px; }
+      
+      /* Mostrar flechas en PC */
+      .slider-arrow { display: block; }
     }
   </style>
 </head>
@@ -435,38 +446,43 @@
     <!-- Servicios -->
     <section id="servicios" class="section" data-aos="fade-up">
       <h2>Nuestros Servicios</h2>
-      <div class="services-container">
-        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-          <i class="fas fa-paint-brush"></i>
-          <h3>Branding</h3>
-          <p>Identidad visual única.</p>
+      <div class="services-slider">
+        <!-- Flechas para PC -->
+        <button class="slider-arrow left-arrow">‹</button>
+        <div class="services-container">
+          <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Branding</h3>
+            <p>Identidad visual única.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Diseño Web</h3>
+            <p>Sitios web atractivos.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Publicidad</h3>
+            <p>Campañas impactantes.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+            <i class="fab fa-google"></i>
+            <h3>Publicidad Google</h3>
+            <p>Maximiza tu alcance.</p>
+          </div>
+          <!-- Servicios adicionales -->
+          <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+            <i class="fas fa-pencil-alt"></i>
+            <h3>Diseño de Logotipos</h3>
+            <p>Diseños únicos y personalizados.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+            <i class="fas fa-box"></i>
+            <h3>Packaging</h3>
+            <p>Empaques que resaltan tu producto.</p>
+          </div>
         </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-          <i class="fas fa-laptop-code"></i>
-          <h3>Diseño Web</h3>
-          <p>Sitios web atractivos.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-          <i class="fas fa-bullhorn"></i>
-          <h3>Publicidad</h3>
-          <p>Campañas impactantes.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-          <i class="fab fa-google"></i>
-          <h3>Publicidad Google</h3>
-          <p>Maximiza tu alcance.</p>
-        </div>
-        <!-- Servicios adicionales -->
-        <div class="service-item" data-aos="fade-up" data-aos-delay="500">
-          <i class="fas fa-pencil-alt"></i>
-          <h3>Diseño de Logotipos</h3>
-          <p>Diseños únicos y personalizados.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="600">
-          <i class="fas fa-box"></i>
-          <h3>Packaging</h3>
-          <p>Empaques que resaltan tu producto.</p>
-        </div>
+        <button class="slider-arrow right-arrow">›</button>
       </div>
     </section>
     
@@ -643,3 +659,4 @@
   </script>
 </body>
 </html>
+
