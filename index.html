@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta viewport para que el diseño se adapte al dispositivo -->
+  <!-- Meta viewport para dispositivos -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diseñador Gráfico - Versión Responsive</title>
+  <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,18 +14,13 @@
        Estilos Base (Mobile-first)
     =============================== */
     * { box-sizing: border-box; }
-    html {
-      scroll-behavior: smooth;
+    html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      overflow-y: scroll; /* Cambio: Forzamos el scroll vertical */
     }
     body {
-      margin: 0;
-      padding: 0;
-      /* Forzamos que el body tenga al menos el alto del viewport */
-      min-height: 100vh;
-      overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
       background: #111;
       color: #ddd;
@@ -62,7 +58,7 @@
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
     
-    /* Sección Mensaje de creatividad con botón Contactame */
+    /* Nueva sección: Mensaje de creatividad con botón Contactame */
     .mensaje-container {
       margin: 20px auto;
       padding: 20px;
@@ -100,6 +96,7 @@
       background: #222;
       padding: 30px 0;
       text-align: justify;
+      overflow: visible; /* Aseguramos que no bloquee el scroll */
     }
     .acerca-container { padding: 0 20px; }
     #acerca h2 {
@@ -110,7 +107,10 @@
     #acerca p { font-size: 12px; line-height: 1.4; font-weight: 300; }
     
     /* Contenedor principal para el resto de secciones */
-    .main-container { margin: 0 auto; }
+    .main-container {
+      margin: 0 auto;
+      overflow: visible; /* Asegura que el contenido siguiente se muestre correctamente */
+    }
     
     /* Banner */
     .banner {
@@ -137,24 +137,27 @@
     /* Secciones generales */
     .section { padding: 20px 0; }
     
-    /* Sección de Servicios en cuadrícula (sin scroll horizontal) */
-    .services-slider {
-      margin: 20px 0;
-    }
+    /* Servicios (Slider) */
+    .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
     .services-container {
-      display: grid;
+      display: flex;
       gap: 10px;
-      grid-template-columns: 1fr 1fr;
-      overflow: visible;
-      scroll-behavior: auto;
-      padding-bottom: 0;
+      transition: transform 0.5s ease;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      touch-action: pan-x;
     }
+    .services-container::-webkit-scrollbar { display: none; }
     .service-item {
       background: #222;
       padding: 15px;
       border-radius: 10px;
-      width: 100%;
-      /* Se ajusta al ancho de cada celda del grid */
+      width: 250px;
+      flex-shrink: 0;
       position: relative;
       overflow: hidden;
       transition: transform 0.3s;
@@ -175,6 +178,20 @@
     .service-item:hover::before { transform: scale(1); }
     .service-item:hover { transform: scale(1.05); }
     .service-item i { font-size: 30px; color: #0f0; margin-bottom: 5px; }
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      padding: 8px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .left-arrow { left: 5px; }
+    .right-arrow { right: 5px; }
     
     /* Paso a Paso */
     .step-box {
@@ -368,245 +385,255 @@
       
       .section { padding: 40px 0; }
       
-      .services-container {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        overflow: visible;
-        scroll-behavior: auto;
-        padding-bottom: 0;
-        touch-action: auto;
-      }
-      .service-item { width: 100%; }
+      .services-container { gap: 20px; }
+      .service-item { width: 300px; padding: 20px; }
+      .service-item i { font-size: 36px; }
+      
+      .step-box { font-size: 16px; }
+      
+      .logo-offer { max-width: 400px; }
+      
+      .testimonial { max-width: 400px; font-size: 16px; padding: 20px; }
+      .testimonial img { width: 80px; height: 80px; }
+      
+      .faq-item { max-width: 400px; font-size: 16px; padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <!-- En este código se muestra el contenido completo en todas las pantallas -->
-  <div class="desktop-content">
-    <!-- Header extendido de lado a lado -->
-    <header data-aos="fade-down" class="full-header">
-      <div class="header-container">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
+  <!-- Header extendido de lado a lado -->
+  <header data-aos="fade-down" class="full-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
+        <div class="brand-text">Diseñador Gráfico</div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Sección Mensaje de creatividad con botón Contactame -->
+  <section class="mensaje-container" data-aos="fade-up">
+    <h2>CREATIVIDAD SIN LÍMITES</h2>
+    <p>CONVIERTE TU NEGOCIO EN UNA MARCA MEMORABLE. DESTACA EN EL MERCADO CON UN DISEÑO PROFESIONAL Y ESTRATÉGICO.</p>
+    <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contactame</a>
+  </section>
+  
+  <!-- Sección Acerca de Mi extendida de lado a lado -->
+  <section id="acerca" data-aos="fade-up" class="full-acerca">
+    <div class="acerca-container">
+      <h2>Acerca de Mi</h2>
+      <p>
+        Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.
+      </p>
+      <p>
+        Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Contenedor principal para el resto de secciones -->
+  <div class="main-container">
+    <!-- Servicios -->
+    <section id="servicios" class="section" data-aos="fade-up">
+      <h2>Nuestros Servicios</h2>
+      <div class="services-container">
+        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-paint-brush"></i>
+          <h3>Branding</h3>
+          <p>Identidad visual única.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Diseño Web</h3>
+          <p>Sitios web atractivos.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-bullhorn"></i>
+          <h3>Publicidad</h3>
+          <p>Campañas impactantes.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+          <i class="fab fa-google"></i>
+          <h3>Publicidad Google</h3>
+          <p>Maximiza tu alcance.</p>
+        </div>
+        <!-- Servicios adicionales -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+          <i class="fas fa-pencil-alt"></i>
+          <h3>Diseño de Logotipos</h3>
+          <p>Diseños únicos y personalizados.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+          <i class="fas fa-box"></i>
+          <h3>Packaging</h3>
+          <p>Empaques que resaltan tu producto.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Paso a Paso -->
+    <section id="pasos" class="section" data-aos="fade-up">
+      <h2>Paso a Paso</h2>
+      <div class="step-box" data-aos="fade-right">
+        <i class="fas fa-search"></i>
+        <strong>Explora:</strong> Elige el servicio adecuado.
+      </div>
+      <div class="step-box" data-aos="fade-right" data-aos-delay="100">
+        <i class="fas fa-shopping-cart"></i>
+        <strong>Compra:</strong> Realiza tu pedido.
+      </div>
+      <div class="step-box" data-aos="fade-right" data-aos-delay="200">
+        <i class="fas fa-credit-card"></i>
+        <strong>Paga:</strong> Utiliza métodos seguros.
+      </div>
+      <div class="step-box" data-aos="fade-right" data-aos-delay="300">
+        <i class="fas fa-file-alt"></i>
+        <strong>Revisión:</strong> Recibe propuestas.
+      </div>
+      <div class="step-box" data-aos="fade-right" data-aos-delay="400">
+        <i class="fas fa-check-circle"></i>
+        <strong>Entrega:</strong> Diseño final.
+      </div>
+    </section>
+    
+    <!-- Ofertas de Logotipos -->
+    <section id="ofertas" class="section" data-aos="fade-up">
+      <h2>Ofertas de Logotipos</h2>
+      <div class="logo-offers">
+        <div class="logo-offer" data-aos="fade-right">
+          <h3>Opción Premium</h3>
+          <p>Más de 100 opciones de logotipos.</p>
+          <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
+        </div>
+        <div class="logo-offer" data-aos="fade-left">
+          <h3>Opción Económica</h3>
+          <p>Más de 20 opciones de alta calidad.</p>
+          <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonios -->
+    <section id="testimonios" class="section" data-aos="fade-up">
+      <h2>Testimonios</h2>
+      <div class="testimonial-container">
+        <div class="testimonial" data-aos="fade-right">
+          <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Testimonio de Juan Pérez">
+          <h3>Juan Pérez</h3>
+          <p>"El servicio de diseño transformó mi negocio. ¡Mi marca destaca!"</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
+          <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Testimonio de María Rodríguez">
+          <h3>María Rodríguez</h3>
+          <p>"Los diseños captaron la esencia de mi marca."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonio de Carlos García">
+          <h3>Carlos García</h3>
+          <p>"La calidad y atención superaron mis expectativas."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
+          <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Testimonio de Ana Martínez">
+          <h3>Ana Martínez</h3>
+          <p>"Mi marca creció gracias a su profesionalismo."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="400">
+          <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonio de Luis Fernando">
+          <h3>Luis Fernando</h3>
+          <p>"Un servicio excepcional que cumplió todas mis expectativas."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="500">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonio de Laura Gómez">
+          <h3>Laura Gómez</h3>
+          <p>"La estrategia y el diseño fueron clave para el éxito de mi negocio."</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Preguntas Frecuentes -->
+    <section id="faq" class="section" data-aos="fade-up">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-container">
+        <div class="faq-item" data-aos="fade-right">
+          <h3>¿Qué incluye el servicio?</h3>
+          <p>Branding, diseño web, publicidad y estrategias de marketing digital.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
+          <h3>¿Cuánto tiempo tarda?</h3>
+          <p>Generalmente, de 7 a 15 días hábiles, según la complejidad.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
+          <h3>¿Cuántas revisiones?</h3>
+          <p>Hasta 3 revisiones sin costo adicional.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
+          <h3>¿En qué formatos se entregan?</h3>
+          <p>Se entregan en PNG, JPG y vectores (AI, EPS, PDF).</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="400">
+          <h3>Soporte post-entrega</h3>
+          <p>Soporte por 30 días para ajustes y dudas.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="500">
+          <h3>¿Cuál es el costo?</h3>
+          <p>Varía según el paquete y necesidades, con precios competitivos.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Footer extendido (full-width) -->
+  <footer data-aos="fade-up" class="full-footer">
+    <div class="footer-inner">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo">
           <div class="brand-text">Diseñador Gráfico</div>
         </div>
-      </div>
-    </header>
-    
-    <!-- Sección Mensaje de creatividad con botón Contactame -->
-    <section class="mensaje-container" data-aos="fade-up">
-      <h2>CREATIVIDAD SIN LÍMITES</h2>
-      <p>CONVIERTE TU NEGOCIO EN UNA MARCA MEMORABLE. DESTACA EN EL MERCADO CON UN DISEÑO PROFESIONAL Y ESTRATÉGICO.</p>
-      <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contactame</a>
-    </section>
-    
-    <!-- Sección Acerca de Mi extendida -->
-    <section id="acerca" data-aos="fade-up" class="full-acerca">
-      <div class="acerca-container">
-        <h2>Acerca de Mi</h2>
-        <p>
-          Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.
-        </p>
-        <p>
-          Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.
-        </p>
-      </div>
-    </section>
-    
-    <!-- Contenedor principal para el resto de secciones -->
-    <div class="main-container">
-      <!-- Servicios en cuadrícula -->
-      <section id="servicios" class="section" data-aos="fade-up">
-        <h2>Nuestros Servicios</h2>
-        <div class="services-slider">
-          <div class="services-container">
-            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-              <i class="fas fa-paint-brush"></i>
-              <h3>Branding</h3>
-              <p>Identidad visual única.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-              <i class="fas fa-laptop-code"></i>
-              <h3>Diseño Web</h3>
-              <p>Sitios web atractivos.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-              <i class="fas fa-bullhorn"></i>
-              <h3>Publicidad</h3>
-              <p>Campañas impactantes.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-              <i class="fab fa-google"></i>
-              <h3>Publicidad Google</h3>
-              <p>Maximiza tu alcance.</p>
-            </div>
-            <!-- Servicios adicionales -->
-            <div class="service-item" data-aos="fade-up" data-aos-delay="500">
-              <i class="fas fa-pencil-alt"></i>
-              <h3>Diseño de Logotipos</h3>
-              <p>Diseños únicos y personalizados.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="600">
-              <i class="fas fa-box"></i>
-              <h3>Packaging</h3>
-              <p>Empaques que resaltan tu producto.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Paso a Paso -->
-      <section id="pasos" class="section" data-aos="fade-up">
-        <h2>Paso a Paso</h2>
-        <div class="step-box" data-aos="fade-right">
-          <i class="fas fa-search"></i>
-          <strong>Explora:</strong> Elige el servicio adecuado.
-        </div>
-        <div class="step-box" data-aos="fade-right" data-aos-delay="100">
-          <i class="fas fa-shopping-cart"></i>
-          <strong>Compra:</strong> Realiza tu pedido.
-        </div>
-        <div class="step-box" data-aos="fade-right" data-aos-delay="200">
-          <i class="fas fa-credit-card"></i>
-          <strong>Paga:</strong> Utiliza métodos seguros.
-        </div>
-        <div class="step-box" data-aos="fade-right" data-aos-delay="300">
-          <i class="fas fa-file-alt"></i>
-          <strong>Revisión:</strong> Recibe propuestas.
-        </div>
-        <div class="step-box" data-aos="fade-right" data-aos-delay="400">
-          <i class="fas fa-check-circle"></i>
-          <strong>Entrega:</strong> Diseño final.
-        </div>
-      </section>
-      
-      <!-- Ofertas de Logotipos -->
-      <section id="ofertas" class="section" data-aos="fade-up">
-        <h2>Ofertas de Logotipos</h2>
-        <div class="logo-offers">
-          <div class="logo-offer" data-aos="fade-right">
-            <h3>Opción Premium</h3>
-            <p>Más de 100 opciones de logotipos.</p>
-            <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
-          </div>
-          <div class="logo-offer" data-aos="fade-left">
-            <h3>Opción Económica</h3>
-            <p>Más de 20 opciones de alta calidad.</p>
-            <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Testimonios -->
-      <section id="testimonios" class="section" data-aos="fade-up">
-        <h2>Testimonios</h2>
-        <div class="testimonial-container">
-          <div class="testimonial" data-aos="fade-right">
-            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Testimonio de Juan Pérez">
-            <h3>Juan Pérez</h3>
-            <p>"El servicio de diseño transformó mi negocio. ¡Mi marca destaca!"</p>
-          </div>
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Testimonio de María Rodríguez">
-            <h3>María Rodríguez</h3>
-            <p>"Los diseños captaron la esencia de mi marca."</p>
-          </div>
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonio de Carlos García">
-            <h3>Carlos García</h3>
-            <p>"La calidad y atención superaron mis expectativas."</p>
-          </div>
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
-            <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Testimonio de Ana Martínez">
-            <h3>Ana Martínez</h3>
-            <p>"Mi marca creció gracias a su profesionalismo."</p>
-          </div>
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="400">
-            <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonio de Luis Fernando">
-            <h3>Luis Fernando</h3>
-            <p>"Un servicio excepcional que cumplió todas mis expectativas."</p>
-          </div>
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="500">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonio de Laura Gómez">
-            <h3>Laura Gómez</h3>
-            <p>"La estrategia y el diseño fueron clave para el éxito de mi negocio."</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Preguntas Frecuentes -->
-      <section id="faq" class="section" data-aos="fade-up">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="faq-container">
-          <div class="faq-item" data-aos="fade-right">
-            <h3>¿Qué incluye el servicio?</h3>
-            <p>Branding, diseño web, publicidad y estrategias de marketing digital.</p>
-          </div>
-          <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
-            <h3>¿Cuánto tiempo tarda?</h3>
-            <p>Generalmente, de 7 a 15 días hábiles, según la complejidad.</p>
-          </div>
-          <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
-            <h3>¿Cuántas revisiones?</h3>
-            <p>Hasta 3 revisiones sin costo adicional.</p>
-          </div>
-          <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
-            <h3>¿En qué formatos se entregan?</h3>
-            <p>Se entregan en PNG, JPG y vectores (AI, EPS, PDF).</p>
-          </div>
-          <div class="faq-item" data-aos="fade-right" data-aos-delay="400">
-            <h3>Soporte post-entrega</h3>
-            <p>Soporte por 30 días para ajustes y dudas.</p>
-          </div>
-          <div class="faq-item" data-aos="fade-right" data-aos-delay="500">
-            <h3>¿Cuál es el costo?</h3>
-            <p>Varía según el paquete y necesidades, con precios competitivos.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-    
-    <!-- Footer extendido (full-width) -->
-    <footer data-aos="fade-up" class="full-footer">
-      <div class="footer-inner">
-        <div class="footer-container">
-          <div class="footer-logo">
-            <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo">
-            <div class="brand-text">Diseñador Gráfico</div>
-          </div>
-          <div class="footer-nav">
-            <a href="#servicios">Servicios</a>
-            <a href="#pasos">Paso a Paso</a>
-            <a href="#testimonios">Testimonios</a>
-            <a href="#ofertas">Ofertas</a>
-          </div>
-        </div>
-        <div class="footer-copy">
-          © 2023 Diseñador Gráfico - Todos los derechos reservados.
+        <div class="footer-nav">
+          <a href="#servicios">Servicios</a>
+          <a href="#pasos">Paso a Paso</a>
+          <a href="#testimonios">Testimonios</a>
+          <a href="#ofertas">Ofertas</a>
         </div>
       </div>
-    </footer>
-    
-    <!-- Botones flotantes -->
-    <div class="whatsapp-button" data-aos="fade-left">
-      <a href="https://wa.link/fgb2lc" target="_blank">
-        <img src="https://i.postimg.cc/ygjvqfVY/WHATSAPP.png" border="0" alt="WHATSAPP">
-      </a>
+      <div class="footer-copy">
+        © 2023 Diseñador Gráfico - Todos los derechos reservados.
+      </div>
     </div>
-    <div class="social-bar" data-aos="fade-up">
-      <a href="https://www.facebook.com/profile.php?id=61558330138342" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.instagram.com/zhurtadito/" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
+  </footer>
+  
+  <!-- Botones flotantes -->
+  <div class="whatsapp-button" data-aos="fade-left">
+    <a href="https://wa.link/fgb2lc" target="_blank">
+      <img src="https://i.postimg.cc/ygjvqfVY/WHATSAPP.png" border="0" alt="WHATSAPP">
+    </a>
+  </div>
+  <div class="social-bar" data-aos="fade-up">
+    <a href="https://www.facebook.com/profile.php?id=61558330138342" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/zhurtadito/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
+    
+    // Slider de servicios (opcional)
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    const servicesContainer = document.querySelector('.services-container');
+    if (leftArrow && rightArrow && servicesContainer) {
+      leftArrow.addEventListener('click', () => {
+        servicesContainer.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+      rightArrow.addEventListener('click', () => {
+        servicesContainer.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+    }
     
     // Opcional: Al hacer clic en un servicio se redirige a WhatsApp
     document.querySelectorAll('.service-item').forEach(item => {
