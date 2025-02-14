@@ -17,17 +17,25 @@
       padding: 0; 
       background: #111; 
       color: #ddd; 
+      text-align: center;
     }
     /* Solo los títulos en mayúsculas */
     h1, h2, h3, .brand-text, nav a {
       text-transform: uppercase;
     }
+    /* Contenedor del header para PC */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+    }
     header { 
       background: #000; 
-      padding: 20px 40px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
+      padding: 20px 0; 
       position: relative;
     }
     .logo-container { 
@@ -80,8 +88,20 @@
       cursor: pointer;
       color: white;
     }
+    /* Vista para móviles: en el header se muestran sólo logo y título centrados */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        justify-content: center;
+      }
+      nav {
+        display: none;
+      }
+    }
+    /* Banner con efecto parallax */
     .banner { 
       background: url('https://source.unsplash.com/1600x600/?design') no-repeat center/cover; 
+      background-attachment: fixed;
       padding: 100px 20px; 
       color: white; 
     }
@@ -102,6 +122,22 @@
     .section { 
       padding: 20px;
     }
+    /* Sección Acerca de Mi: fondo de lado a lado con contenido centrado */
+    #acerca {
+      background: #222;
+      padding: 40px 20px;
+      color: #fff;
+      text-align: justify;
+      width: 100%;
+    }
+    #acerca .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #acerca h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
     /* Slider de Servicios */
     .services-slider {
       position: relative;
@@ -116,6 +152,11 @@
       overflow-x: auto;
       scroll-behavior: smooth;
       padding-bottom: 10px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .services-container::-webkit-scrollbar {
+      display: none;
     }
     .service-item {
       background: #222;
@@ -136,7 +177,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(15, 255, 0, 0.4) 0%, rgba(15, 255, 0, 0) 50%);
+      background: radial-gradient(circle, rgba(15,255,0,0.4) 0%, rgba(15,255,0,0) 50%);
       transform: scale(0);
       transition: transform 0.4s;
     }
@@ -245,7 +286,7 @@
     }
     .faq-item:hover {
       background: #444;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
     .faq-item h3 {
       margin: 0 0 10px;
@@ -401,35 +442,27 @@
       border-top: 1px solid #333;
       padding-top: 10px;
     }
-    /* En móviles, ocultar el menú (ícono y opciones) y centrar el header */
-    @media (max-width: 768px) {
-      header {
-        justify-content: center;
-        text-align: center;
-      }
-      nav {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
   <header data-aos="fade-down">
-    <div class="logo-container">
-      <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
-      <div class="brand-text">Diseñador Gráfico</div>
-    </div>
-    <nav data-aos="fade-left">
-      <!-- Ícono de menú para móviles -->
-      <div class="menu-icon" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
+        <div class="brand-text">Diseñador Gráfico</div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#servicios" onclick="toggleMenu()">Servicios</a></li>
-        <li><a href="#pasos" onclick="toggleMenu()">Como adquirir</a></li>
-        <li><a href="https://wa.link/fgb2lc" class="btn-nav" onclick="toggleMenu()">Contratar</a></li>
-      </ul>
-    </nav>
+      <nav data-aos="fade-left">
+        <!-- Ícono de menú para móviles -->
+        <div class="menu-icon" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#servicios" onclick="toggleMenu()">Servicios</a></li>
+          <li><a href="#pasos" onclick="toggleMenu()">Como adquirir</a></li>
+          <li><a href="https://wa.link/fgb2lc" class="btn-nav" onclick="toggleMenu()">Contratar</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
   
   <div class="banner" data-aos="zoom-in">
@@ -437,6 +470,19 @@
     <p>Convierte tu negocio en una marca memorable. Destaca en el mercado con un diseño profesional y estratégico que conecte con tu audiencia.</p>
     <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
   </div>
+  
+  <!-- Sección Acerca de Mi: Fondo a toda la anchura y contenido centrado -->
+  <section id="acerca" class="section" data-aos="fade-up">
+    <div class="container" style="max-width:800px; margin: 0 auto; text-align: justify;">
+      <h2 style="text-align: center;">Acerca de Mi</h2>
+      <p>
+        Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo. Mi experiencia abarca desde la creación de identidades visuales hasta el diseño de material publicitario y digital, siempre adaptándome a las necesidades específicas de cada proyecto.
+      </p>
+      <p>
+        Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez de respuesta, precios competitivos y alta calidad. Mi compromiso es entender a fondo la visión de mis clientes, trabajando en conjunto a través de reuniones virtuales o presenciales para transformar sus ideas en diseños impactantes y efectivos.
+      </p>
+    </div>
+  </section>
   
   <!-- Sección de Servicios con Slider -->
   <section id="servicios" class="section" data-aos="fade-up">
@@ -673,7 +719,7 @@
     const rightArrow = document.querySelector('.right-arrow');
     const servicesContainer = document.querySelector('.services-container');
     
-    if(leftArrow && rightArrow && servicesContainer) {
+    if (leftArrow && rightArrow && servicesContainer) {
       leftArrow.addEventListener('click', () => {
         servicesContainer.scrollBy({ left: -300, behavior: 'smooth' });
       });
@@ -698,3 +744,4 @@
   </script>
 </body>
 </html>
+
