@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Regla global para imágenes (y otros elementos) para evitar desbordamiento */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
     /* ==============================
        Estilos Base (Mobile-first)
     =============================== */
@@ -17,7 +23,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Evita desbordamiento horizontal global */
       overflow-y: auto;
     }
     body {
@@ -31,7 +37,7 @@
     body::-webkit-scrollbar { display: none; }
     h1, h2, h3, .brand-text { text-transform: uppercase; }
     
-    /* Contenedores internos centrados (360px) */
+    /* Contenedores internos centrados (360px para móviles) */
     .content-container,
     .header-container,
     .acerca-container,
@@ -58,7 +64,7 @@
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
     
-    /* Nueva sección: Mensaje de creatividad con botón Contactame */
+    /* Sección Mensaje de creatividad */
     .mensaje-container {
       margin: 20px auto;
       padding: 20px;
@@ -90,11 +96,11 @@
     }
     .mensaje-container .btn:hover { transform: scale(1.05); }
     
-    /* Sección Acerca de Mi extendida */
+    /* Sección Acerca de Mi */
     .full-acerca {
       width: 100%;
       background: #222;
-      padding: 30px 0 50px 0; /* Se aumenta el padding-bottom para asegurar espacio para scroll (Opción 3) */
+      padding: 30px 0 50px 0; /* Se aumenta el espacio inferior para el scroll */
       text-align: justify;
       overflow: visible;
     }
@@ -110,10 +116,10 @@
     .main-container {
       margin: 0 auto;
       overflow: visible;
-      margin-bottom: 20px; /* Se añade margin-bottom para asegurar espacio de scroll (Opción 3) */
+      margin-bottom: 20px; /* Espacio inferior adicional */
     }
     
-    /* Banner */
+    /* Banner (si se utiliza) */
     .banner {
       background: url('https://source.unsplash.com/360x640/?design') no-repeat center/cover;
       padding: 60px 10px;
@@ -138,21 +144,27 @@
     /* Secciones generales */
     .section { padding: 20px 0; }
     
-    /* Servicios (Slider) */
-    .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
+    /* Servicios (Slider reestructurado) */
     .services-container {
       display: flex;
       gap: 10px;
-      transition: transform 0.5s ease;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-behavior: smooth;
       padding-bottom: 10px;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      touch-action: pan-x;
+      /* Por defecto en móviles se acomodan en varias líneas */
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow-x: visible;
     }
-    .services-container::-webkit-scrollbar { display: none; }
+    /* En pantallas mayores se activa el slider horizontal */
+    @media (min-width: 768px) {
+      .services-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .services-container::-webkit-scrollbar { display: none; }
+    }
     .service-item {
       background: #222;
       padding: 15px;
@@ -375,7 +387,7 @@
       .mensaje-container p { font-size: 20px; }
       .mensaje-container .btn { font-size: 18px; padding: 15px 30px; }
       
-      .full-acerca { padding: 40px 0 60px 0; } /* Ajuste adicional para pantallas grandes */
+      .full-acerca { padding: 40px 0 60px 0; }
       #acerca h2 { font-size: 32px; }
       #acerca p { font-size: 18px; }
       
@@ -419,7 +431,7 @@
     <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contactame</a>
   </section>
   
-  <!-- Sección Acerca de Mi extendida de lado a lado -->
+  <!-- Sección Acerca de Mi extendida -->
   <section id="acerca" data-aos="fade-up" class="full-acerca">
     <div class="acerca-container">
       <h2>Acerca de Mi</h2>
@@ -623,7 +635,7 @@
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Slider de servicios (opcional)
+    // Para pantallas grandes se activa el slider horizontal en "services-container"
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
     const servicesContainer = document.querySelector('.services-container');
@@ -645,5 +657,3 @@
   </script>
 </body>
 </html>
-
-
