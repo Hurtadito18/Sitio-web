@@ -94,7 +94,7 @@
     .full-acerca {
       width: 100%;
       background: #222;
-      padding: 30px 0;
+      padding: 30px 0 50px 0; /* Se aumenta el padding-bottom para asegurar espacio para scroll (Opción 3) */
       text-align: justify;
       overflow: visible;
     }
@@ -110,6 +110,7 @@
     .main-container {
       margin: 0 auto;
       overflow: visible;
+      margin-bottom: 20px; /* Se añade margin-bottom para asegurar espacio de scroll (Opción 3) */
     }
     
     /* Banner */
@@ -374,7 +375,7 @@
       .mensaje-container p { font-size: 20px; }
       .mensaje-container .btn { font-size: 18px; padding: 15px 30px; }
       
-      .full-acerca { padding: 40px 0; }
+      .full-acerca { padding: 40px 0 60px 0; } /* Ajuste adicional para pantallas grandes */
       #acerca h2 { font-size: 32px; }
       #acerca p { font-size: 18px; }
       
@@ -620,8 +621,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Inicializamos AOS para que las animaciones se activen solo una vez.
-    AOS.init({ duration: 1000, easing: 'ease-in-out', once: true });
+    AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
     // Slider de servicios (opcional)
     const leftArrow = document.querySelector('.left-arrow');
@@ -645,4 +645,5 @@
   </script>
 </body>
 </html>
+
 
