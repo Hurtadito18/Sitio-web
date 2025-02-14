@@ -2,49 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta para que se adapte a la pantalla del dispositivo -->
+  <!-- Meta viewport para móvil -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseñador Gráfico - Versión Móvil</title>
-  
-  <!-- Fuentes e iconos -->
+  <title>Diseñador Gráfico - Móvil</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <style>
-    /* 1) Ajuste global para que ningún elemento exceda el ancho */
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden; /* Evita scroll lateral */
-    }
+    /* Aplicamos box-sizing a todos los elementos */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
     body {
       font-family: 'Montserrat', sans-serif;
       background: #111;
       color: #ddd;
       text-align: center;
     }
-    h1, h2, h3, .brand-text {
-      text-transform: uppercase;
-    }
+    h1, h2, h3, .brand-text { text-transform: uppercase; }
     
-    /* 2) Contenedor principal para móviles (máx. 360px) */
-    .main-container {
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      padding: 0 10px;
-    }
-    
-    /* 3) Header con solo logo y título */
+    /* HEADER: Contenedor negro a lo largo de la pantalla */
     header {
       background: #000;
       padding: 15px 0;
+      width: 100%;
     }
     .header-container {
+      max-width: 360px;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -52,31 +36,48 @@
     .logo-container {
       display: flex;
       align-items: center;
-      /* Sin transform para evitar desplazamiento */
     }
-    .logo {
-      height: 40px;
+    .logo { height: 40px; }
+    .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
+    
+    /* SECCIÓN ACERCA DE MI: Contenedor gris a lo largo de la pantalla */
+    #acerca {
+      background: #222;
+      padding: 30px 10px;
+      width: 100%;
+      text-align: justify;
     }
-    .brand-text {
-      font-size: 18px;
-      font-weight: 700;
-      margin-left: 5px;
+    #acerca .acerca-container {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    #acerca h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    #acerca p {
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 300;
     }
     
-    /* 4) Banner sin background-attachment: fixed */
+    /* CONTENEDOR PRINCIPAL para el resto de secciones */
+    .main-container {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    
+    /* Banner */
     .banner {
       background: url('https://source.unsplash.com/360x640/?design') no-repeat center/cover;
       padding: 60px 10px;
       color: #fff;
     }
-    .banner h2 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-    .banner p {
-      font-size: 14px;
-      line-height: 1.4;
-    }
+    .banner h2 { margin-bottom: 10px; font-size: 20px; }
+    .banner p { font-size: 14px; line-height: 1.4; }
     .btn {
       background: #0f0;
       color: #000;
@@ -89,37 +90,10 @@
       font-size: 14px;
       transition: transform 0.3s;
     }
-    .btn:hover {
-      transform: scale(1.05);
-    }
+    .btn:hover { transform: scale(1.05); }
     
-    /* 5) Secciones con padding */
-    .section {
-      padding: 20px 0;
-    }
-    
-    /* Acerca de Mi */
-    #acerca {
-      background: #222;
-      padding: 30px 10px;
-      text-align: justify;
-    }
-    #acerca h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 20px;
-    }
-    #acerca p {
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    
-    /* Servicios con slider */
-    .services-slider {
-      position: relative;
-      overflow: hidden;
-      margin: 20px 0;
-    }
+    /* Servicios (Slider) */
+    .services-slider { position: relative; overflow: hidden; margin: 20px 0; }
     .services-container {
       display: flex;
       gap: 10px;
@@ -130,9 +104,7 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    .services-container::-webkit-scrollbar {
-      display: none;
-    }
+    .services-container::-webkit-scrollbar { display: none; }
     .service-item {
       background: #222;
       padding: 15px;
@@ -142,8 +114,8 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.3s;
-      font-weight: 400;
       cursor: pointer;
+      font-weight: 400;
     }
     .service-item::before {
       content: "";
@@ -156,17 +128,9 @@
       transform: scale(0);
       transition: transform 0.4s;
     }
-    .service-item:hover::before {
-      transform: scale(1);
-    }
-    .service-item:hover {
-      transform: scale(1.05);
-    }
-    .service-item i {
-      font-size: 30px;
-      color: #0f0;
-      margin-bottom: 5px;
-    }
+    .service-item:hover::before { transform: scale(1); }
+    .service-item:hover { transform: scale(1.05); }
+    .service-item i { font-size: 30px; color: #0f0; margin-bottom: 5px; }
     .slider-arrow {
       position: absolute;
       top: 50%;
@@ -179,12 +143,8 @@
       cursor: pointer;
       z-index: 10;
     }
-    .left-arrow {
-      left: 5px;
-    }
-    .right-arrow {
-      right: 5px;
-    }
+    .left-arrow { left: 5px; }
+    .right-arrow { right: 5px; }
     
     /* Paso a Paso */
     .step-box {
@@ -200,13 +160,8 @@
       font-weight: 400;
       font-size: 12px;
     }
-    .step-box i {
-      font-size: 20px;
-      color: #0f0;
-    }
-    .step-box strong {
-      font-weight: 700;
-    }
+    .step-box i { font-size: 20px; color: #0f0; }
+    .step-box strong { font-weight: 700; }
     
     /* Ofertas de Logotipos */
     .logo-offers {
@@ -224,21 +179,11 @@
       max-width: 300px;
       text-align: left;
     }
-    .logo-offer h3 {
-      margin-top: 0;
-      font-weight: 700;
-      font-size: 16px;
-    }
-    .logo-offer p {
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    .logo-offer .btn {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+    .logo-offer h3 { margin-top: 0; font-weight: 700; font-size: 16px; }
+    .logo-offer p { font-size: 14px; line-height: 1.4; }
+    .logo-offer .btn { margin-top: 10px; font-size: 14px; }
     
-    /* Testimonios */
+    /* Testimonios (6) */
     .testimonial-container {
       display: flex;
       flex-wrap: wrap;
@@ -256,21 +201,11 @@
       color: #ddd;
       font-size: 12px;
     }
-    .testimonial img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-    }
-    .testimonial h3 {
-      font-weight: 700;
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .testimonial p {
-      line-height: 1.4;
-    }
+    .testimonial img { width: 60px; height: 60px; border-radius: 50%; }
+    .testimonial h3 { font-weight: 700; margin: 5px 0; font-size: 14px; }
+    .testimonial p { line-height: 1.4; }
     
-    /* FAQ */
+    /* FAQ (6) */
     .faq-container {
       display: flex;
       flex-wrap: wrap;
@@ -313,12 +248,8 @@
       align-items: center;
       gap: 5px;
     }
-    .footer-logo img {
-      height: 40px;
-    }
-    .footer-logo .brand-text {
-      font-size: 14px;
-    }
+    .footer-logo img { height: 40px; }
+    .footer-logo .brand-text { font-size: 14px; }
     .footer-nav, .footer-legal {
       display: flex;
       flex-wrap: wrap;
@@ -331,9 +262,7 @@
       text-decoration: none;
       transition: color 0.3s;
     }
-    .footer-nav a:hover, .footer-legal a:hover {
-      color: #fff;
-    }
+    .footer-nav a:hover, .footer-legal a:hover { color: #fff; }
     .footer-payments {
       display: flex;
       gap: 10px;
@@ -341,27 +270,21 @@
       align-items: center;
       margin: 10px auto;
     }
-    .footer-payments a img {
-      width: 80px;
-      height: auto;
-    }
+    .footer-payments a img { width: 80px; height: auto; }
     .footer-copy {
       margin-top: 10px;
       border-top: 1px solid #333;
       padding-top: 10px;
     }
     
-    /* Botones flotantes (WhatsApp, redes) */
+    /* Botones flotantes */
     .whatsapp-button {
       position: fixed;
       bottom: 50px;
       right: 10px;
       z-index: 1000;
     }
-    .whatsapp-button img {
-      width: 60px;
-      height: 60px;
-    }
+    .whatsapp-button img { width: 60px; height: 60px; }
     .social-bar {
       position: fixed;
       bottom: 0;
@@ -379,42 +302,35 @@
       font-size: 20px;
       transition: transform 0.3s;
     }
-    .social-bar a:hover {
-      transform: scale(1.1);
-    }
+    .social-bar a:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
-  <div class="main-container">
-    <!-- Encabezado con solo logo y título -->
-    <header data-aos="fade-down">
-      <div class="header-container">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
-          <div class="brand-text">Diseñador Gráfico</div>
-        </div>
+  <!-- El encabezado y la sección Acerca de Mi salen a lo largo de la pantalla -->
+  <header data-aos="fade-down">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
+        <div class="brand-text">Diseñador Gráfico</div>
       </div>
-    </header>
-    
-    <!-- Banner -->
-    <div class="banner" data-aos="zoom-in">
-      <h2>Creatividad y Diseño a tu Alcance</h2>
-      <p>Convierte tu negocio en una marca memorable con un diseño profesional y estratégico.</p>
-      <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
     </div>
-    
-    <!-- Sección Acerca de Mi -->
-    <section id="acerca" class="section" data-aos="fade-up">
+  </header>
+  
+  <section id="acerca" data-aos="fade-up">
+    <div class="acerca-container">
       <h2>Acerca de Mi</h2>
       <p>
         Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.
       </p>
       <p>
-        Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez de respuesta, precios competitivos y alta calidad.
+        Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.
       </p>
-    </section>
-    
-    <!-- Sección de Servicios (Slider) -->
+    </div>
+  </section>
+  
+  <!-- Contenedor principal para el resto de secciones -->
+  <div class="main-container">
+    <!-- Servicios (Slider) -->
     <section id="servicios" class="section" data-aos="fade-up">
       <h2>Nuestros Servicios</h2>
       <div class="services-slider">
@@ -440,13 +356,13 @@
             <h3>Publicidad Google</h3>
             <p>Maximiza tu alcance.</p>
           </div>
-          <!-- Agrega más servicios según necesites -->
+          <!-- Puedes agregar más servicios según necesites -->
         </div>
         <button class="slider-arrow right-arrow">&#10095;</button>
       </div>
     </section>
     
-    <!-- Sección Paso a Paso -->
+    <!-- Paso a Paso -->
     <section id="pasos" class="section" data-aos="fade-up">
       <h2>Paso a Paso</h2>
       <div class="step-box" data-aos="fade-right">
@@ -459,11 +375,11 @@
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="200">
         <i class="fas fa-credit-card"></i>
-        <strong>Paga:</strong> Métodos seguros.
+        <strong>Paga:</strong> Utiliza métodos seguros.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="300">
         <i class="fas fa-file-alt"></i>
-        <strong>Revisión:</strong> Te entregamos propuestas.
+        <strong>Revisión:</strong> Recibe propuestas.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="400">
         <i class="fas fa-check-circle"></i>
@@ -488,7 +404,7 @@
       </div>
     </section>
     
-    <!-- Testimonios -->
+    <!-- Testimonios (6 elementos) -->
     <section id="testimonios" class="section" data-aos="fade-up">
       <h2>Testimonios</h2>
       <div class="testimonial-container">
@@ -500,25 +416,59 @@
         <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
           <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Testimonio de María Rodríguez">
           <h3>María Rodríguez</h3>
-          <p>"Diseños que captaron la esencia de mi marca."</p>
+          <p>"Los diseños captaron la esencia de mi marca."</p>
         </div>
-        <!-- Agrega más testimonios según necesites -->
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonio de Carlos García">
+          <h3>Carlos García</h3>
+          <p>"La calidad y atención superaron mis expectativas."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
+          <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Testimonio de Ana Martínez">
+          <h3>Ana Martínez</h3>
+          <p>"Mi marca creció gracias a su profesionalismo."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="400">
+          <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonio de Luis Fernando">
+          <h3>Luis Fernando</h3>
+          <p>"Un servicio excepcional que cumplió todas mis expectativas."</p>
+        </div>
+        <div class="testimonial" data-aos="fade-right" data-aos-delay="500">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonio de Laura Gómez">
+          <h3>Laura Gómez</h3>
+          <p>"La estrategia y el diseño fueron clave para el éxito de mi negocio."</p>
+        </div>
       </div>
     </section>
     
-    <!-- Preguntas Frecuentes (FAQ) -->
+    <!-- Preguntas Frecuentes (6 FAQs) -->
     <section id="faq" class="section" data-aos="fade-up">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-container">
         <div class="faq-item" data-aos="fade-right">
           <h3>¿Qué incluye el servicio?</h3>
-          <p>Branding, diseño web, publicidad y más.</p>
+          <p>Branding, diseño web, publicidad y estrategias de marketing digital.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
-          <h3>¿Cuánto tarda?</h3>
-          <p>7 a 15 días hábiles, según complejidad.</p>
+          <h3>¿Cuánto tiempo tarda?</h3>
+          <p>Generalmente, de 7 a 15 días hábiles, según la complejidad.</p>
         </div>
-        <!-- Agrega más FAQs según necesites -->
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
+          <h3>¿Cuántas revisiones se ofrecen?</h3>
+          <p>Se incluyen hasta 3 revisiones sin costo adicional.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
+          <h3>¿En qué formatos se entregan?</h3>
+          <p>PNG, JPG y vectores (AI, EPS, PDF).</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="400">
+          <h3>Soporte post-entrega</h3>
+          <p>Soporte por 30 días para ajustes y dudas.</p>
+        </div>
+        <div class="faq-item" data-aos="fade-right" data-aos-delay="500">
+          <h3>¿Cuál es el costo?</h3>
+          <p>Varía según el paquete y necesidades, con precios competitivos.</p>
+        </div>
       </div>
     </section>
     
@@ -541,7 +491,7 @@
       </div>
     </footer>
     
-    <!-- Botones flotantes (WhatsApp y redes) -->
+    <!-- Botones flotantes -->
     <div class="whatsapp-button" data-aos="fade-left">
       <a href="https://wa.link/fgb2lc" target="_blank">
         <img src="https://i.postimg.cc/ygjvqfVY/WHATSAPP.png" border="0" alt="WHATSAPP">
@@ -557,12 +507,11 @@
     </div>
   </div> <!-- .main-container -->
   
-  <!-- Scripts AOS y slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Flechas del slider de servicios
+    // Slider de servicios
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
     const servicesContainer = document.querySelector('.services-container');
@@ -575,7 +524,7 @@
       });
     }
     
-    // Click en cada servicio redirige a WhatsApp (opcional)
+    // Opcional: Al hacer clic en un servicio se redirige a WhatsApp
     document.querySelectorAll('.service-item').forEach(item => {
       item.addEventListener('click', () => {
         window.location.href = "https://wa.link/fgb2lc";
@@ -584,3 +533,4 @@
   </script>
 </body>
 </html>
+
