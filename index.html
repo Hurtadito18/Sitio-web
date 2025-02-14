@@ -14,12 +14,15 @@
        Estilos Base (Mobile-first)
     =============================== */
     * { box-sizing: border-box; }
-    html, body {
+    html {
+      scroll-behavior: smooth;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
     body {
+      margin: 0;
+      padding: 0;
       overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
       background: #111;
@@ -145,7 +148,7 @@
       padding-bottom: 10px;
       -ms-overflow-style: none;
       scrollbar-width: none;
-      touch-action: pan-x;
+      touch-action: auto;
     }
     .services-container::-webkit-scrollbar { display: none; }
     .service-item {
@@ -295,7 +298,6 @@
     }
     .footer-logo {
       display: flex;
-
       align-items: center;
       gap: 5px;
     }
@@ -641,4 +643,3 @@
   </script>
 </body>
 </html>
-
