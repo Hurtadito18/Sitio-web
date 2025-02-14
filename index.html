@@ -50,7 +50,7 @@
       font-weight: 400; 
       text-transform: none;
     }
-    /* Menú y mobile */
+    /* Menú y navegación */
     nav { 
       display: flex; 
       gap: 20px; 
@@ -76,7 +76,7 @@
       transform: scale(1.05);
       background: rgba(15, 255, 0, 0.1);
     }
-    /* Menú Responsive */
+    /* Menú Responsive para móviles */
     .menu-icon {
       display: none;
       cursor: pointer;
@@ -89,22 +89,25 @@
       margin: 0;
       padding: 0;
     }
-    /* Vista para móviles: el menú se muestra como overlay */
     @media (max-width: 768px) {
       .menu-icon {
         display: block;
       }
+      /* Cuando se active, el menú ocupará toda la pantalla */
       .nav-links {
         display: none;
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.95);
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+        margin: 0;
+        padding: 0;
       }
       .nav-links li {
         margin: 20px 0;
@@ -130,7 +133,7 @@
       transform: scale(1.05); 
     }
     .section { 
-      padding: 20px;
+      padding: 20px 20px; 
     }
     /* Slider de Servicios */
     .services-slider {
@@ -681,7 +684,7 @@
       once: false
     });
     
-    // Función para menú responsive (toggle full-screen overlay)
+    // Función para menú responsive (toggle overlay)
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
       if (navLinks.style.display === "flex") {
