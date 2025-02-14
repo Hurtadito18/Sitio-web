@@ -2,23 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta viewport para dispositivos móviles -->
+  <!-- Meta viewport para que el diseño se adapte al dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diseñador Gráfico - Versión Móvil</title>
-  
   <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <style>
     /* Aseguramos que ningún elemento sobresalga */
     * { box-sizing: border-box; }
+    
+    /* Evitamos scroll horizontal */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
+    /* Dejamos que solo el body maneje el scroll vertical */
     body {
       overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
@@ -29,16 +30,17 @@
       scrollbar-width: none;
     }
     body::-webkit-scrollbar { display: none; }
+    
     h1, h2, h3, .brand-text { text-transform: uppercase; }
     
-    /* Contenedor interno centrado de 360px */
+    /* Contenedor interno centrado de 360px para el contenido principal */
     .content-container {
       max-width: 360px;
       margin: 0 auto;
       padding: 0 10px;
     }
     
-    /* Header extendido (full-width) */
+    /* Header extendido (full-width) con fondo negro */
     .full-header {
       width: 100%;
       background: #000;
@@ -58,7 +60,40 @@
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
     
-    /* Sección Acerca de Mi extendida */
+    /* Nueva sección: Mensaje de creatividad */
+    .mensaje-container {
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background: #111;
+    }
+    .mensaje-container h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .mensaje-container p {
+      font-size: 14px;
+      font-weight: 300;
+      color: #ccc;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .mensaje-container .btn {
+      background: #0f0;
+      color: #000;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.3s;
+    }
+    .mensaje-container .btn:hover { transform: scale(1.05); }
+    
+    /* Sección Acerca de Mi extendida (full-width) */
     .full-acerca {
       width: 100%;
       background: #222;
@@ -68,18 +103,14 @@
     .acerca-container {
       max-width: 360px;
       margin: 0 auto;
-      padding: 0 20px; /* Mayor espacio a los lados */
+      padding: 0 20px;
     }
     #acerca h2 {
       text-align: center;
       margin-bottom: 15px;
       font-size: 20px;
     }
-    #acerca p {
-      font-size: 12px;
-      line-height: 1.4;
-      font-weight: 300;
-    }
+    #acerca p { font-size: 12px; line-height: 1.4; font-weight: 300; }
     
     /* Contenedor principal para el resto de secciones */
     .main-container {
@@ -326,7 +357,7 @@
   </style>
 </head>
 <body>
-  <!-- Header y Acerca de Mi ahora se extienden a lo largo de la pantalla -->
+  <!-- Header extendido de lado a lado -->
   <header data-aos="fade-down" class="full-header">
     <div class="header-container">
       <div class="logo-container">
@@ -336,6 +367,14 @@
     </div>
   </header>
   
+  <!-- Sección Mensaje de creatividad con botón Contactame -->
+  <section class="mensaje-container" data-aos="fade-up">
+    <h2>CREATIVIDAD SIN LÍMITES</h2>
+    <p>CONVIERTE TU NEGOCIO EN UNA MARCA MEMORABLE. DESTACA EN EL MERCADO CON UN DISEÑO PROFESIONAL Y ESTRATÉGICO.</p>
+    <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contactame</a>
+  </section>
+  
+  <!-- Sección Acerca de Mi extendida de lado a lado -->
   <section id="acerca" data-aos="fade-up" class="full-acerca">
     <div class="acerca-container">
       <h2>Acerca de Mi</h2>
@@ -348,7 +387,7 @@
     </div>
   </section>
   
-  <!-- El resto del contenido se agrupa en un contenedor central -->
+  <!-- Contenedor principal para el resto de secciones -->
   <div class="main-container">
     <!-- Servicios -->
     <section id="servicios" class="section" data-aos="fade-up">
@@ -373,6 +412,17 @@
           <i class="fab fa-google"></i>
           <h3>Publicidad Google</h3>
           <p>Maximiza tu alcance.</p>
+        </div>
+        <!-- Servicios adicionales -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+          <i class="fas fa-pencil-alt"></i>
+          <h3>Diseño de Logotipos</h3>
+          <p>Diseños únicos y personalizados.</p>
+        </div>
+        <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+          <i class="fas fa-box"></i>
+          <h3>Packaging</h3>
+          <p>Empaques que resaltan tu producto.</p>
         </div>
       </div>
     </section>
@@ -409,12 +459,12 @@
         <div class="logo-offer" data-aos="fade-right">
           <h3>Opción Premium</h3>
           <p>Más de 100 opciones de logotipos.</p>
-          <a href="https://wa.link/fgb2lc" class="btn">Comprar ahora</a>
+          <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
         </div>
         <div class="logo-offer" data-aos="fade-left">
           <h3>Opción Económica</h3>
           <p>Más de 20 opciones de alta calidad.</p>
-          <a href="https://wa.link/fgb2lc" class="btn">Comprar ahora</a>
+          <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Comprar ahora</a>
         </div>
       </div>
     </section>
