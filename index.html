@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta viewport para dispositivos -->
+  <!-- Meta viewport para que el diseño se adapte al dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diseñador Gráfico - Versión Responsive</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
@@ -135,15 +135,14 @@
     /* Secciones generales */
     .section { padding: 20px 0; }
     
-    /* Servicios en cuadrícula (sin slider ni scroll horizontal) */
+    /* Sección de Servicios en cuadrícula (sin scroll horizontal) */
     .services-slider {
       margin: 20px 0;
-      /* Ya no usaremos position relative ni flechas */
+      /* No se usa slider, por lo que eliminamos flechas y comportamiento de scroll */
     }
     .services-container {
       display: grid;
       gap: 10px;
-      /* Por defecto, dos columnas en móvil */
       grid-template-columns: 1fr 1fr;
       overflow: visible;
       scroll-behavior: auto;
@@ -153,9 +152,8 @@
       background: #222;
       padding: 15px;
       border-radius: 10px;
-      /* Ajustamos el ancho al 100% del grid cell */
       width: 100%;
-      flex-shrink: 0;
+      /* Se ajusta al ancho del grid cell */
       position: relative;
       overflow: hidden;
       transition: transform 0.3s;
@@ -369,25 +367,22 @@
       
       .section { padding: 40px 0; }
       
-      /* En PC, para los servicios usaremos una cuadrícula con más columnas */
+      /* Para PC, definimos la cuadrícula con más columnas si es posible */
       .services-container {
         display: grid;
         gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         overflow: visible;
-        padding-bottom: 0;
         scroll-behavior: auto;
+        padding-bottom: 0;
         touch-action: auto;
       }
-      
       .service-item { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <!-- Versión móvil: No se muestran opciones arriba del logo (se usan únicamente en el footer) -->
-  
-  <!-- Versión PC: Contenido completo -->
+  <!-- Versión PC: Contenido completo (para móviles, el diseño se mantiene en cuadrícula sin scroll horizontal) -->
   <div class="desktop-content">
     <!-- Header extendido de lado a lado -->
     <header data-aos="fade-down" class="full-header">
@@ -613,8 +608,7 @@
   <script>
     AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Ya no se usa slider, se ha removido la funcionalidad de flechas.
-    
+    // Ya no se usa slider, por lo que se elimina la funcionalidad de flechas.
     // Opcional: Al hacer clic en un servicio se redirige a WhatsApp
     document.querySelectorAll('.service-item').forEach(item => {
       item.addEventListener('click', () => {
@@ -624,4 +618,5 @@
   </script>
 </body>
 </html>
+
 
