@@ -18,6 +18,7 @@
       background: #111; 
       color: #ddd; 
       text-align: center;
+      overflow-x: hidden;
     }
     /* Solo los títulos en mayúsculas */
     h1, h2, h3, .brand-text, nav a {
@@ -41,6 +42,13 @@
     .logo-container { 
       display: flex; 
       align-items: center;
+      transform: translateX(-20px);
+    }
+    /* Ajuste en móviles para el logo y título */
+    @media (max-width: 720px) {
+      .logo-container {
+         transform: translateX(-10px);
+      }
     }
     .logo { 
       height: 60px; 
@@ -122,7 +130,7 @@
     .section { 
       padding: 20px;
     }
-    /* Sección Acerca de Mi: fondo de lado a lado con contenido centrado */
+    /* Sección Acerca de Mi: fondo a toda la anchura y contenido centrado */
     #acerca {
       background: #222;
       padding: 40px 20px;
@@ -133,6 +141,7 @@
     #acerca .container {
       max-width: 800px;
       margin: 0 auto;
+      text-align: justify;
     }
     #acerca h2 {
       text-align: center;
@@ -262,7 +271,7 @@
       margin-top: 15px;
       display: inline-block;
     }
-    /* Preguntas Frecuentes (FAQ) */
+    /* Sección de Preguntas Frecuentes (FAQ) */
     .faq-container {
       display: flex;
       flex-wrap: wrap;
@@ -384,19 +393,19 @@
     .social-bar a:hover {
       transform: scale(1.1);
     }
-    /* Footer */
+    /* Footer centrado con logo y texto reducido */
     footer {
       background: #000;
       color: #ddd;
       padding: 30px 20px;
-      text-align: left;
+      text-align: center;
     }
     .footer-container {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       gap: 20px;
     }
@@ -404,14 +413,19 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      justify-content: center;
     }
     .footer-logo img {
-      height: 50px;
+      height: 40px;
+    }
+    .footer-logo .brand-text {
+      font-size: 16px;
     }
     .footer-nav, .footer-legal {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
+      justify-content: center;
     }
     .footer-nav a, .footer-legal a {
       color: #0f0;
@@ -422,7 +436,6 @@
     .footer-nav a:hover, .footer-legal a:hover {
       color: #fff;
     }
-    /* Métodos de Pago en el Footer */
     .footer-payments {
       display: flex;
       gap: 20px;
@@ -471,7 +484,7 @@
     <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
   </div>
   
-  <!-- Sección Acerca de Mi: Fondo a toda la anchura y contenido centrado -->
+  <!-- Sección Acerca de Mi -->
   <section id="acerca" class="section" data-aos="fade-up">
     <div class="container" style="max-width:800px; margin: 0 auto; text-align: justify;">
       <h2 style="text-align: center;">Acerca de Mi</h2>
