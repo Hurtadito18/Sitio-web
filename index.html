@@ -24,7 +24,6 @@
       width: 100%;
       min-height: 100%;
       overflow-x: hidden; /* Evita scroll horizontal global */
-      /* NO forzamos overflow-y para que solo haya un scroll vertical natural */
       font-family: 'Montserrat', sans-serif;
       background: #111;
       color: #ddd;
@@ -94,26 +93,6 @@
       transform: scale(1.05);
     }
 
-    /* SECCIÓN ACERCA DE MÍ */
-    .full-acerca {
-      background: #222;
-      padding: 30px 15px 50px; /* margen inferior generoso */
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: justify;
-    }
-    .full-acerca h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 20px;
-      text-transform: uppercase;
-    }
-    .full-acerca p {
-      margin-bottom: 10px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
     /* CONTENEDOR PRINCIPAL */
     .main-container {
       max-width: 1200px;
@@ -137,11 +116,11 @@
       gap: 10px;
       justify-content: center;
     }
-    /* En pantallas grandes, se puede permitir scroll horizontal si deseas un slider */
+    /* En pantallas grandes, se puede permitir scroll horizontal si lo deseas */
     @media (min-width: 768px) {
       .services-container {
         flex-wrap: nowrap;
-        overflow-x: auto; /* Sólo horizontal si sobrepasa el ancho */
+        overflow-x: auto; /* Solo horizontal si sobrepasa el ancho */
         scrollbar-width: none; /* Oculta scrollbar en Firefox */
       }
       .services-container::-webkit-scrollbar {
@@ -325,13 +304,6 @@
     <h2>Creatividad sin límites</h2>
     <p>Convierte tu negocio en una marca memorable. Destaca en el mercado con un diseño profesional y estratégico.</p>
     <a href="https://wa.link/fgb2lc" class="btn" target="_blank">Contáctame</a>
-  </section>
-
-  <!-- ACERCA DE MÍ -->
-  <section id="acerca" class="full-acerca" data-aos="fade-up">
-    <h2>Acerca de Mi</h2>
-    <p>Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Trabajo de forma independiente colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo.</p>
-    <p>Ofrezco soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez, precios competitivos y alta calidad.</p>
   </section>
 
   <!-- CONTENEDOR PRINCIPAL -->
