@@ -8,17 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Se define que el body no supere los 720px y se centre */
-    body {
-      max-width: 720px;
-      margin: 0 auto;
+    html {
+      scroll-behavior: smooth;
+    }
+    body { 
       font-family: 'Montserrat', sans-serif; 
+      margin: 0; 
+      padding: 0; 
       background: #111; 
       color: #ddd; 
       text-align: center;
-    }
-    html {
-      scroll-behavior: smooth;
     }
     /* Solo los títulos en mayúsculas */
     h1, h2, h3, .brand-text, nav a {
@@ -89,8 +88,8 @@
       cursor: pointer;
       color: white;
     }
-    /* Vista para móviles: en el header se muestran sólo logo y título centrados (breakpoint a 720px) */
-    @media (max-width: 720px) {
+    /* Vista para móviles: en el header se muestran sólo logo y título centrados */
+    @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
         justify-content: center;
@@ -123,30 +122,21 @@
     .section { 
       padding: 20px;
     }
-    /* Sección Acerca de Mi: Fondo de lado a lado con contenido centrado */
+    /* Sección Acerca de Mi: fondo de lado a lado con contenido centrado */
     #acerca {
       background: #222;
       padding: 40px 20px;
       color: #fff;
+      text-align: justify;
       width: 100%;
     }
-    /* Contenedor para el contenido de Acerca de Mi con ancho máximo de 720px */
     #acerca .container {
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
-      text-align: justify;
     }
     #acerca h2 {
       text-align: center;
       margin-bottom: 20px;
-    }
-    /* En móviles (hasta 720px), centramos el texto de Acerca de Mi */
-    @media (max-width: 720px) {
-      #acerca .container {
-        width: 100%;
-        text-align: center !important;
-        padding: 0 20px;
-      }
     }
     /* Slider de Servicios */
     .services-slider {
@@ -481,9 +471,9 @@
     <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
   </div>
   
-  <!-- Sección Acerca de Mi: Fondo de lado a lado con contenido centrado -->
+  <!-- Sección Acerca de Mi: Fondo a toda la anchura y contenido centrado -->
   <section id="acerca" class="section" data-aos="fade-up">
-    <div class="container" style="max-width:720px; margin: 0 auto; text-align: justify;">
+    <div class="container" style="max-width:800px; margin: 0 auto; text-align: justify;">
       <h2 style="text-align: center;">Acerca de Mi</h2>
       <p>
         Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo. Mi experiencia abarca desde la creación de identidades visuales hasta el diseño de material publicitario y digital, siempre adaptándome a las necesidades específicas de cada proyecto.
