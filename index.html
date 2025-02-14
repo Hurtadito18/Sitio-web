@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Estilo Global */
     html {
       scroll-behavior: smooth;
     }
     body { 
-      font-family: 'Montserrat', sans-serif; 
+      font-family: 'Montserrat', sans-serif;
       margin: 0; 
       padding: 0; 
       background: #111; 
@@ -20,45 +21,46 @@
       text-align: center;
       overflow-x: hidden;
     }
-    /* Solo los títulos en mayúsculas */
     h1, h2, h3, .brand-text, nav a {
       text-transform: uppercase;
     }
-    /* Contenedor del header para PC */
+    
+    /* Diseño de PC (estilo base) */
+    .container,
+    .header-container,
+    .services-slider,
+    .testimonial-container,
+    .faq-container,
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    
+    /* Header */
+    header {
+      background: #000;
+      padding: 20px 0;
+      position: relative;
+    }
     .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-      width: 100%;
     }
-    header { 
-      background: #000; 
-      padding: 20px 0; 
-      position: relative;
-    }
-    .logo-container { 
-      display: flex; 
+    .logo-container {
+      display: flex;
       align-items: center;
       transform: translateX(-20px);
     }
-    /* Ajuste en móviles para el logo y título */
-    @media (max-width: 720px) {
-      .logo-container {
-         transform: translateX(-10px);
-      }
-    }
-    .logo { 
-      height: 60px; 
+    .logo {
+      height: 60px;
     }
     .brand-text {
       font-size: 24px;
       font-weight: 700;
       margin-left: 10px;
     }
-    /* Menú y navegación */
     nav {
       display: flex;
       align-items: center;
@@ -71,7 +73,7 @@
       padding: 0;
     }
     .nav-links li a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: 700;
       padding: 10px;
@@ -89,48 +91,40 @@
       transform: scale(1.05);
       background: rgba(15,255,0,0.1);
     }
-    /* Ícono de menú para móviles */
     .menu-icon {
       display: none;
       font-size: 28px;
       cursor: pointer;
-      color: white;
+      color: #fff;
     }
-    /* Vista para móviles: unificar breakpoint a 720px */
-    @media (max-width: 720px) {
-      .header-container {
-        flex-direction: column;
-        justify-content: center;
-      }
-      nav {
-        display: none;
-      }
-    }
-    /* Banner con efecto parallax */
-    .banner { 
-      background: url('https://source.unsplash.com/1600x600/?design') no-repeat center/cover; 
+    
+    /* Banner */
+    .banner {
+      background: url('https://source.unsplash.com/1600x600/?design') no-repeat center/cover;
       background-attachment: fixed;
-      padding: 100px 20px; 
-      color: white; 
+      padding: 100px 20px;
+      color: #fff;
     }
-    .btn { 
-      background: #0f0; 
-      color: black; 
-      padding: 15px 25px; 
-      text-decoration: none; 
-      display: inline-block; 
-      border-radius: 5px; 
-      margin-top: 20px; 
-      font-weight: 700; 
-      transition: transform 0.3s; 
+    .btn {
+      background: #0f0;
+      color: #000;
+      padding: 15px 25px;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-weight: 700;
+      transition: transform 0.3s;
     }
-    .btn:hover { 
-      transform: scale(1.05); 
+    .btn:hover {
+      transform: scale(1.05);
     }
-    .section { 
-      padding: 20px;
+    
+    /* Secciones */
+    .section {
+      padding: 20px 0;
     }
-    /* Sección Acerca de Mi: fondo a toda la anchura y contenido centrado */
+    /* Acerca de Mi */
     #acerca {
       background: #222;
       padding: 40px 20px;
@@ -147,12 +141,13 @@
       text-align: center;
       margin-bottom: 20px;
     }
+    
     /* Slider de Servicios */
     .services-slider {
       position: relative;
       overflow: hidden;
-      margin: 20px auto;
       max-width: 1000px;
+      margin: 20px auto;
     }
     .services-container {
       display: flex;
@@ -196,7 +191,7 @@
     .service-item:hover {
       transform: scale(1.05);
     }
-    .service-item i { 
+    .service-item i {
       font-size: 40px;
       color: #0f0;
       margin-bottom: 10px;
@@ -219,13 +214,15 @@
     .right-arrow {
       right: 10px;
     }
+    
+    /* Paso a Paso */
     .step-box {
       background: #222;
       padding: 20px;
       border-radius: 10px;
-      margin: 5px auto;
-      width: 80%;
       max-width: 400px;
+      width: 80%;
+      margin: 10px auto;
       text-align: left;
       display: flex;
       align-items: center;
@@ -236,19 +233,17 @@
       font-size: 24px;
       color: #0f0;
     }
-    h2 {
-      font-weight: 700;
-    }
     .step-box strong {
       font-weight: 700;
     }
+    
     /* Ofertas de Logotipos */
     .logo-offers {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
-      margin: 40px 0;
+      margin: 40px auto;
     }
     .logo-offer {
       background: #222;
@@ -265,13 +260,13 @@
     .logo-offer p {
       font-size: 16px;
       line-height: 1.4;
-      text-transform: none;
     }
     .logo-offer .btn {
       margin-top: 15px;
       display: inline-block;
     }
-    /* Sección de Preguntas Frecuentes (FAQ) centrada */
+    
+    /* Preguntas Frecuentes (FAQ) */
     .faq-container {
       display: flex;
       flex-wrap: wrap;
@@ -286,7 +281,6 @@
       border: 1px solid #0f0;
       border-radius: 8px;
       padding: 15px;
-      margin: 10px auto;
       color: #ddd;
       transition: background 0.3s, box-shadow 0.3s;
       min-height: 150px;
@@ -294,20 +288,14 @@
       max-width: calc(50% - 20px);
       text-align: center;
     }
-    /* En dispositivos móviles (hasta 720px), los ítems ocupan el 100% */
-    @media (max-width: 720px) {
-      .faq-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
+    
     /* Testimonios */
     .testimonial-container {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
       margin: 20px auto;
+      justify-content: center;
     }
     .testimonial {
       background: #222;
@@ -329,9 +317,9 @@
     .testimonial p {
       font-size: 14px;
       line-height: 1.4;
-      text-transform: none;
     }
-    /* Botones de WhatsApp y Back-to-Top */
+    
+    /* Botones flotantes */
     .whatsapp-button {
       position: fixed;
       bottom: 65px;
@@ -364,7 +352,7 @@
     .back-to-top i {
       font-size: 24px;
     }
-    /* Redes Sociales */
+    
     .social-bar {
       position: fixed;
       bottom: 0;
@@ -385,7 +373,8 @@
     .social-bar a:hover {
       transform: scale(1.1);
     }
-    /* Footer centrado con logo y texto reducido */
+    
+    /* Footer */
     footer {
       background: #000;
       color: #ddd;
@@ -393,8 +382,6 @@
       text-align: center;
     }
     .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -442,11 +429,12 @@
     .footer-copy {
       font-size: 12px;
       margin-top: 15px;
-      text-align: center;
-      width: 100%;
       border-top: 1px solid #333;
       padding-top: 10px;
     }
+    
+    /* Estilos para PC: Sin cambios para móviles */
+    /* En este ejemplo, solo se aplicará el diseño para PC. */
   </style>
 </head>
 <body>
@@ -457,7 +445,6 @@
         <div class="brand-text">Diseñador Gráfico</div>
       </div>
       <nav data-aos="fade-left">
-        <!-- Ícono de menú para móviles -->
         <div class="menu-icon" onclick="toggleMenu()">
           <i class="fas fa-bars"></i>
         </div>
@@ -476,7 +463,6 @@
     <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
   </div>
   
-  <!-- Sección Acerca de Mi -->
   <section id="acerca" class="section" data-aos="fade-up">
     <div class="container" style="max-width:800px; margin: 0 auto; text-align: justify;">
       <h2 style="text-align: center;">Acerca de Mi</h2>
@@ -489,7 +475,6 @@
     </div>
   </section>
   
-  <!-- Sección de Servicios con Slider -->
   <section id="servicios" class="section" data-aos="fade-up">
     <h2>Nuestros Servicios</h2>
     <div class="services-slider">
@@ -515,7 +500,6 @@
           <h3>Publicidad con Google</h3>
           <p>Estrategias efectivas en Google Ads para maximizar tu alcance.</p>
         </div>
-        <!-- 4 servicios adicionales -->
         <div class="service-item" data-aos="fade-up" data-aos-delay="500">
           <i class="fas fa-pencil-alt"></i>
           <h3>Diseño de Logotipos</h3>
@@ -565,7 +549,6 @@
     </div>
   </section>
   
-  <!-- Sección de Ofertas de Logotipos -->
   <section id="ofertas" class="section" data-aos="fade-up">
     <h2>Ofertas de Logotipos</h2>
     <div class="logo-offers">
@@ -582,7 +565,6 @@
     </div>
   </section>
   
-  <!-- Sección de Testimonios -->
   <section id="testimonios" class="section" data-aos="fade-up">
     <h2>Testimonios</h2>
     <div class="testimonial-container">
@@ -619,7 +601,6 @@
     </div>
   </section>
   
-  <!-- Sección de Preguntas Frecuentes (FAQ) centrada -->
   <section id="faq" class="section" data-aos="fade-up">
     <h2>Preguntas Frecuentes</h2>
     <div class="faq-container">
@@ -650,7 +631,6 @@
     </div>
   </section>
   
-  <!-- Footer con métodos de pago en el área legal -->
   <footer data-aos="fade-up">
     <div class="footer-container">
       <div class="footer-logo">
@@ -668,7 +648,6 @@
         <a href="#privacidad">Política de Privacidad</a>
       </div>
     </div>
-    <!-- Métodos de pago -->
     <div class="footer-payments">
       <a href="https://wa.link/fgb2lc" target="_blank">
         <img src="https://i.postimg.cc/bd4JhqdW/APPS-04.png" alt="APPS-04">
@@ -685,7 +664,6 @@
     </div>
   </footer>
   
-  <!-- Botón de volver al principio (Back to Top) -->
   <div class="back-to-top" data-aos="fade-up">
     <i class="fas fa-arrow-up"></i>
   </div>
@@ -703,23 +681,13 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: false
-    });
+    AOS.init({ duration: 1000, easing: 'ease-in-out', once: false });
     
-    // Función para menú responsive (toggle overlay)
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
-      if (navLinks.style.display === "flex") {
-        navLinks.style.display = "none";
-      } else {
-        navLinks.style.display = "flex";
-      }
+      navLinks.style.display = (navLinks.style.display === "flex") ? "none" : "flex";
     }
     
-    // Slider de servicios
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
     const servicesContainer = document.querySelector('.services-container');
@@ -728,20 +696,17 @@
       leftArrow.addEventListener('click', () => {
         servicesContainer.scrollBy({ left: -300, behavior: 'smooth' });
       });
-      
       rightArrow.addEventListener('click', () => {
         servicesContainer.scrollBy({ left: 300, behavior: 'smooth' });
       });
     }
     
-    // Redirigir al link en cada servicio al hacer clic
     document.querySelectorAll('.service-item').forEach(item => {
       item.addEventListener('click', () => {
         window.location.href = "https://wa.link/fgb2lc";
       });
     });
     
-    // Botón de volver al principio
     const backToTop = document.querySelector('.back-to-top');
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -749,4 +714,3 @@
   </script>
 </body>
 </html>
-
