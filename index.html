@@ -2,24 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Meta viewport para que el diseño se adapte al dispositivo -->
+  <!-- Meta viewport para dispositivos -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseñador Gráfico - Versión Móvil</title>
+  <title>Diseñador Gráfico - Versión Responsive</title>
   <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Aseguramos que ningún elemento sobresalga */
+    /* ==============================
+       Estilos Base (Mobile-first)
+    =============================== */
     * { box-sizing: border-box; }
-    
-    /* Evitamos scroll horizontal */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
-    /* Dejamos que solo el body maneje el scroll vertical */
     body {
       overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
@@ -30,11 +29,15 @@
       scrollbar-width: none;
     }
     body::-webkit-scrollbar { display: none; }
-    
     h1, h2, h3, .brand-text { text-transform: uppercase; }
     
-    /* Contenedor interno centrado de 360px para el contenido principal */
-    .content-container {
+    /* Contenedores internos centrados (360px) */
+    .content-container,
+    .header-container,
+    .acerca-container,
+    .main-container,
+    .mensaje-container,
+    .footer-inner {
       max-width: 360px;
       margin: 0 auto;
       padding: 0 10px;
@@ -47,23 +50,17 @@
       padding: 15px 0;
     }
     .header-container {
-      max-width: 360px;
-      margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
+    .logo-container { display: flex; align-items: center; }
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
     
-    /* Nueva sección: Mensaje de creatividad */
+    /* Nueva sección: Mensaje de creatividad con botón Contactame */
     .mensaje-container {
-      max-width: 360px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
       text-align: center;
       background: #111;
@@ -93,18 +90,14 @@
     }
     .mensaje-container .btn:hover { transform: scale(1.05); }
     
-    /* Sección Acerca de Mi extendida (full-width) */
+    /* Sección Acerca de Mi extendida */
     .full-acerca {
       width: 100%;
       background: #222;
       padding: 30px 0;
       text-align: justify;
     }
-    .acerca-container {
-      max-width: 360px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    .acerca-container { padding: 0 20px; }
     #acerca h2 {
       text-align: center;
       margin-bottom: 15px;
@@ -113,12 +106,7 @@
     #acerca p { font-size: 12px; line-height: 1.4; font-weight: 300; }
     
     /* Contenedor principal para el resto de secciones */
-    .main-container {
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      padding: 0 10px;
-    }
+    .main-container { margin: 0 auto; }
     
     /* Banner */
     .banner {
@@ -283,13 +271,20 @@
       font-size: 12px;
     }
     
-    /* Footer */
-    footer {
+    /* ==============================
+       Footer extendido (full-width)
+    =============================== */
+    .full-footer {
+      width: 100%;
       background: #000;
-      color: #ddd;
       padding: 20px 10px;
       text-align: center;
       font-size: 12px;
+    }
+    .footer-inner {
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 0 10px;
     }
     .footer-container {
       display: flex;
@@ -300,6 +295,7 @@
     }
     .footer-logo {
       display: flex;
+
       align-items: center;
       gap: 5px;
     }
@@ -354,6 +350,51 @@
     }
     .social-bar a { color: #0f0; font-size: 20px; transition: transform 0.3s; }
     .social-bar a:hover { transform: scale(1.1); }
+    
+    /* ==============================
+       Estilos para PC (min-width: 768px)
+    =============================== */
+    @media (min-width: 768px) {
+      .content-container,
+      .header-container,
+      .acerca-container,
+      .main-container,
+      .mensaje-container,
+      .footer-inner {
+        max-width: 1200px;
+        padding: 0 40px;
+      }
+      .full-header { padding: 20px 0; }
+      .brand-text { font-size: 24px; }
+      
+      .mensaje-container h2 { font-size: 36px; }
+      .mensaje-container p { font-size: 20px; }
+      .mensaje-container .btn { font-size: 18px; padding: 15px 30px; }
+      
+      .full-acerca { padding: 40px 0; }
+      #acerca h2 { font-size: 32px; }
+      #acerca p { font-size: 18px; }
+      
+      .banner { padding: 100px 40px; }
+      .banner h2 { font-size: 36px; }
+      .banner p { font-size: 18px; }
+      .btn { font-size: 18px; padding: 15px 30px; }
+      
+      .section { padding: 40px 0; }
+      
+      .services-container { gap: 20px; }
+      .service-item { width: 300px; padding: 20px; }
+      .service-item i { font-size: 36px; }
+      
+      .step-box { font-size: 16px; }
+      
+      .logo-offer { max-width: 400px; }
+      
+      .testimonial { max-width: 400px; font-size: 16px; padding: 20px; }
+      .testimonial img { width: 80px; height: 80px; }
+      
+      .faq-item { max-width: 400px; font-size: 16px; padding: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -536,9 +577,11 @@
         </div>
       </div>
     </section>
-    
-    <!-- Footer -->
-    <footer data-aos="fade-up">
+  </div>
+  
+  <!-- Footer extendido (full-width) -->
+  <footer data-aos="fade-up" class="full-footer">
+    <div class="footer-inner">
       <div class="footer-container">
         <div class="footer-logo">
           <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo">
@@ -554,22 +597,22 @@
       <div class="footer-copy">
         © 2023 Diseñador Gráfico - Todos los derechos reservados.
       </div>
-    </footer>
-    
-    <!-- Botones flotantes -->
-    <div class="whatsapp-button" data-aos="fade-left">
-      <a href="https://wa.link/fgb2lc" target="_blank">
-        <img src="https://i.postimg.cc/ygjvqfVY/WHATSAPP.png" border="0" alt="WHATSAPP">
-      </a>
     </div>
-    <div class="social-bar" data-aos="fade-up">
-      <a href="https://www.facebook.com/profile.php?id=61558330138342" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.instagram.com/zhurtadito/" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
+  </footer>
+  
+  <!-- Botones flotantes -->
+  <div class="whatsapp-button" data-aos="fade-left">
+    <a href="https://wa.link/fgb2lc" target="_blank">
+      <img src="https://i.postimg.cc/ygjvqfVY/WHATSAPP.png" border="0" alt="WHATSAPP">
+    </a>
+  </div>
+  <div class="social-bar" data-aos="fade-up">
+    <a href="https://www.facebook.com/profile.php?id=61558330138342" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/zhurtadito/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -598,3 +641,4 @@
   </script>
 </body>
 </html>
+
