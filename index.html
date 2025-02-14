@@ -2,14 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Esta meta etiqueta asegura que el diseño se escale correctamente en móviles -->
+  <!-- Meta viewport para asegurar que se adapte al ancho del dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diseñador Gráfico - Versión Móvil</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Estilos base para celulares (mobile‑first) */
+    /* Evita que ningún elemento sobresalga */
+    * { box-sizing: border-box; }
+    
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -23,15 +25,15 @@
     h1, h2, h3, .brand-text, nav a {
       text-transform: uppercase;
     }
-    
-    /* Contenedor principal para celular (ancho fijo de 360px) */
+    /* Contenedor principal de ancho completo con max-width para celulares */
     .main-container {
-      width: 360px;
+      width: 100%;
+      max-width: 360px;
       margin: 0 auto;
       padding: 0 10px;
     }
     
-    /* Header */
+    /* Encabezado: solo logo y título */
     header {
       background: #000;
       padding: 15px 0;
@@ -39,44 +41,17 @@
     }
     .header-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
     .logo-container {
       display: flex;
       align-items: center;
-      /* Ajuste leve para centrar */
-      transform: translateX(0);
+      /* Centrado sin desplazamientos adicionales */
+      transform: none;
     }
     .logo { height: 40px; }
     .brand-text { font-size: 18px; font-weight: 700; margin-left: 5px; }
-    nav { display: flex; align-items: center; }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 5px;
-    }
-    .btn-nav {
-      color: #0f0;
-      border: 2px solid #0f0;
-      padding: 5px 10px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 12px;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .btn-nav:hover { transform: scale(1.05); background: rgba(15,255,0,0.1); }
-    /* Se mostrará siempre el menú en esta versión móvil */
     
     /* Banner */
     .banner {
@@ -101,6 +76,7 @@
     
     /* Secciones */
     .section { padding: 20px 0; }
+    
     /* Acerca de Mi */
     #acerca {
       background: #222;
@@ -302,6 +278,7 @@
     }
     .back-to-top:hover { transform: scale(1.1); }
     .back-to-top i { font-size: 20px; }
+    
     .social-bar {
       position: fixed;
       bottom: 0;
@@ -326,22 +303,12 @@
           <img src="https://i.postimg.cc/7G5ybTf4/MARCA-100-X-100-PX.png" alt="Logo" class="logo">
           <div class="brand-text">Diseñador Gráfico</div>
         </div>
-        <nav data-aos="fade-left">
-          <div class="menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-          </div>
-          <ul class="nav-links">
-            <li><a href="#servicios" onclick="toggleMenu()">Servicios</a></li>
-            <li><a href="#pasos" onclick="toggleMenu()">Como adquirir</a></li>
-            <li><a href="https://wa.link/fgb2lc" class="btn-nav" onclick="toggleMenu()">Contratar</a></li>
-          </ul>
-        </nav>
       </div>
     </header>
     
     <div class="banner" data-aos="zoom-in">
       <h2>Creatividad y Diseño a tu alcance</h2>
-      <p>Convierte tu negocio en una marca memorable. Destaca en el mercado con un diseño profesional y estratégico que conecte con tu audiencia.</p>
+      <p>Convierte tu negocio en una marca memorable. Destaca en el mercado con un diseño profesional y estratégico.</p>
       <a href="https://wa.link/fgb2lc" class="btn" data-aos="flip-up">Contáctame</a>
     </div>
     
@@ -349,10 +316,10 @@
       <div class="container">
         <h2>Acerca de Mi</h2>
         <p>
-          Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo. Mi experiencia abarca desde la creación de identidades visuales hasta el diseño de material publicitario y digital, siempre adaptándome a las necesidades específicas de cada proyecto.
+          Hola, soy Diego Hurtado, diseñador gráfico con sede en Bogotá. Durante los últimos tres años he trabajado de manera independiente, colaborando con marcas y emprendedores para desarrollar diseños que destacan en un mercado competitivo. Mi experiencia abarca desde la creación de identidades visuales hasta el diseño de material publicitario y digital, adaptándome a las necesidades de cada proyecto.
         </p>
         <p>
-          Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez de respuesta, precios competitivos y alta calidad. Mi compromiso es entender a fondo la visión de mis clientes, trabajando en conjunto a través de reuniones virtuales o presenciales para transformar sus ideas en diseños impactantes y efectivos.
+          Me esfuerzo por ofrecer soluciones creativas y personalizadas, manteniendo un equilibrio entre rapidez de respuesta, precios competitivos y alta calidad.
         </p>
       </div>
     </section>
@@ -365,42 +332,42 @@
           <div class="service-item" data-aos="fade-up" data-aos-delay="100">
             <i class="fas fa-paint-brush"></i>
             <h3>Branding</h3>
-            <p>Identidad visual única para tu marca.</p>
+            <p>Identidad visual única.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="200">
             <i class="fas fa-laptop-code"></i>
             <h3>Diseño Web</h3>
-            <p>Creación de sitios web atractivos y funcionales.</p>
+            <p>Sitios web atractivos.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="300">
             <i class="fas fa-bullhorn"></i>
             <h3>Publicidad</h3>
-            <p>Campañas visuales impactantes.</p>
+            <p>Campañas impactantes.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="400">
             <i class="fab fa-google"></i>
-            <h3>Publicidad con Google</h3>
-            <p>Estrategias efectivas en Google Ads para maximizar tu alcance.</p>
+            <h3>Publicidad Google</h3>
+            <p>Maximiza tu alcance.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="500">
             <i class="fas fa-pencil-alt"></i>
-            <h3>Diseño de Logotipos</h3>
-            <p>Creación de logotipos originales y memorables.</p>
+            <h3>Logotipos</h3>
+            <p>Diseños memorables.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="600">
             <i class="fas fa-box"></i>
             <h3>Packaging</h3>
-            <p>Diseño de empaques que destacan en el punto de venta.</p>
+            <p>Empaques destacados.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="700">
             <i class="fas fa-hashtag"></i>
             <h3>Redes Sociales</h3>
-            <p>Diseños optimizados para tus perfiles sociales.</p>
+            <p>Optimiza tus perfiles.</p>
           </div>
           <div class="service-item" data-aos="fade-up" data-aos-delay="800">
             <i class="fas fa-pen-fancy"></i>
             <h3>Ilustraciones</h3>
-            <p>Ilustraciones personalizadas para tu marca.</p>
+            <p>Diseños personalizados.</p>
           </div>
         </div>
         <button class="slider-arrow right-arrow">&#10095;</button>
@@ -408,26 +375,26 @@
     </section>
     
     <section id="pasos" class="section" data-aos="fade-up">
-      <h2>Paso a Paso para Adquirir Nuestros Servicios</h2>
+      <h2>Paso a Paso</h2>
       <div class="step-box" data-aos="fade-right">
         <i class="fas fa-search"></i>
-        <strong>Explora:</strong> Descubre nuestros servicios y elige el adecuado.
+        <strong>Explora:</strong> Elige el servicio adecuado.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="100">
         <i class="fas fa-shopping-cart"></i>
-        <strong>Compra:</strong> Realiza tu pedido fácilmente.
+        <strong>Compra:</strong> Realiza tu pedido.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="200">
         <i class="fas fa-credit-card"></i>
-        <strong>Paga:</strong> Métodos seguros y confiables.
+        <strong>Paga:</strong> Utiliza métodos seguros.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="300">
         <i class="fas fa-file-alt"></i>
-        <strong>Revisión:</strong> Te entregamos propuestas personalizadas.
+        <strong>Revisión:</strong> Recibe propuestas.
       </div>
       <div class="step-box" data-aos="fade-right" data-aos-delay="400">
         <i class="fas fa-check-circle"></i>
-        <strong>Entrega:</strong> Recibe tu diseño final en alta calidad.
+        <strong>Entrega:</strong> Diseño final.
       </div>
     </section>
     
@@ -436,12 +403,12 @@
       <div class="logo-offers">
         <div class="logo-offer" data-aos="fade-right">
           <h3>Opción Premium</h3>
-          <p>Paga una vez, obtén más de 100 opciones de diseño de logotipos.</p>
+          <p>Más de 100 opciones.</p>
           <a href="https://wa.link/fgb2lc" class="btn">Comprar ahora</a>
         </div>
         <div class="logo-offer" data-aos="fade-left">
           <h3>Opción Económica</h3>
-          <p>Paga una vez, obtén más de 20 opciones de diseño de logotipos de alta calidad a bajo costo.</p>
+          <p>Más de 20 opciones de alta calidad.</p>
           <a href="https://wa.link/fgb2lc" class="btn">Comprar ahora</a>
         </div>
       </div>
@@ -453,32 +420,32 @@
         <div class="testimonial" data-aos="fade-right">
           <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Testimonio de Juan Pérez">
           <h3>Juan Pérez</h3>
-          <p>"El servicio de diseño gráfico transformó mi negocio. Su creatividad y profesionalismo hicieron que mi marca se destacara en el mercado."</p>
+          <p>"El servicio transformó mi negocio. ¡Mi marca destaca!"</p>
         </div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
           <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Testimonio de María Rodríguez">
           <h3>María Rodríguez</h3>
-          <p>"Estoy muy satisfecha con los diseños. Realmente captaron la esencia de mi marca y me ayudaron a atraer a más clientes."</p>
+          <p>"Los diseños captaron la esencia de mi marca."</p>
         </div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
           <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonio de Carlos García">
           <h3>Carlos García</h3>
-          <p>"El equipo es increíble. La calidad de su trabajo y la atención al detalle superaron mis expectativas."</p>
+          <p>"La calidad y atención superaron mis expectativas."</p>
         </div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="300">
           <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Testimonio de Ana Martínez">
           <h3>Ana Martínez</h3>
-          <p>"Desde que contraté sus servicios, mi marca ha experimentado un crecimiento notable. ¡Recomiendo totalmente su trabajo!"</p>
+          <p>"Mi marca creció notablemente tras contratar sus servicios."</p>
         </div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="400">
           <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonio de Luis Fernando">
           <h3>Luis Fernando</h3>
-          <p>"Un servicio excepcional y muy profesional. Mis expectativas se cumplieron a la perfección."</p>
+          <p>"Servicio excepcional y profesional."</p>
         </div>
         <div class="testimonial" data-aos="fade-right" data-aos-delay="500">
           <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonio de Laura Gómez">
           <h3>Laura Gómez</h3>
-          <p>"El diseño y la estrategia fueron claves para el éxito de mi marca. Estoy encantada con el resultado."</p>
+          <p>"El diseño y estrategia fueron claves para el éxito."</p>
         </div>
       </div>
     </section>
@@ -487,28 +454,28 @@
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-container">
         <div class="faq-item" data-aos="fade-right">
-          <h3>¿Qué incluye el servicio de diseño gráfico?</h3>
-          <p>Incluye el desarrollo de identidad visual, branding, diseño web, publicidad y estrategias de marketing digital personalizadas.</p>
+          <h3>¿Qué incluye el servicio?</h3>
+          <p>Desarrollo de identidad, branding, diseño web, publicidad y más.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
-          <h3>¿Cuánto tiempo toma completar un proyecto?</h3>
-          <p>Generalmente, los proyectos se completan en 7 a 15 días hábiles, dependiendo de la complejidad y las revisiones.</p>
+          <h3>¿Cuánto tiempo tarda?</h3>
+          <p>Generalmente de 7 a 15 días hábiles.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
-          <h3>¿Cuántas revisiones se incluyen?</h3>
-          <p>Se incluyen hasta 3 revisiones sin costo adicional para asegurarnos de que el diseño cumpla con tus expectativas.</p>
+          <h3>¿Cuántas revisiones?</h3>
+          <p>Hasta 3 revisiones sin costo adicional.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
-          <h3>¿En qué formatos se entregan los archivos?</h3>
-          <p>Se entregan en formatos PNG, JPG y vectores (AI, EPS, PDF), para garantizar su versatilidad en cualquier uso.</p>
+          <h3>¿En qué formatos?</h3>
+          <p>PNG, JPG y vectores (AI, EPS, PDF).</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="400">
-          <h3>¿Ofrecen soporte post-entrega?</h3>
-          <p>Sí, ofrecemos soporte post-entrega por 30 días para resolver cualquier duda o realizar ajustes menores.</p>
+          <h3>Soporte post-entrega</h3>
+          <p>Soporte por 30 días para ajustes y dudas.</p>
         </div>
         <div class="faq-item" data-aos="fade-right" data-aos-delay="500">
-          <h3>¿Cuál es el costo del servicio?</h3>
-          <p>El costo varía según el paquete y las necesidades del proyecto, pero garantizamos precios competitivos y accesibles.</p>
+          <h3>¿Costo?</h3>
+          <p>Varía según el paquete, con precios competitivos.</p>
         </div>
       </div>
     </section>
@@ -564,7 +531,7 @@
         <i class="fab fa-instagram"></i>
       </a>
     </div>
-  </div>
+  </div> <!-- .main-container -->
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
